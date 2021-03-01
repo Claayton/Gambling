@@ -1,7 +1,6 @@
 from PySimpleGUI import PySimpleGUI as sg
 from random import choice
 from time import sleep
-import emoji 
 
 p1escolha = ''
 pcescolha = ''
