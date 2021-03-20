@@ -16,7 +16,7 @@ janela01, janela02, janela03 = janela_choice(), None, None
 
 # Criar loop para leitura de eventos 
 while True:
-    window, event, values = sg.read_all_windows() 
+    window, event, values =   all_windows.read
     if window == janela01 and event == sg.WIN_CLOSED:
         break
     if window == janela01 and event == 'JOKENPO':

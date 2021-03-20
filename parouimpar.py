@@ -5,11 +5,11 @@ from random import randint
 # layout
 sg.theme('Reddit')
 layout = [
-    [sg.Text('Voce escolhe PAR ou IMPAR?')],
-    [sg.Checkbox('PAR', key='PAR')], [sg.Checkbox('IMPAR', key='IMPAR')], 
-    [sg.Text('Digite seu número aqui: ')], [sg.Input(key='usu_number')],
-    [sg.Button(f'{"START":^46}', key='start')],        
-    [sg.Output(size=(33, 6))]
+    [sg.Text(f'{"Voce escolhe PAR ou IMPAR? ":<30}')],
+    [sg.Checkbox(f'{"PAR":<15}', key='PAR'), sg.Checkbox(f'{"IMPAR":<15}', key='IMPAR')], 
+    [sg.Text('Digite seu número aqui: '), sg.Input(size=(4, 1), key='usu_number')],
+    [sg.Button(f'{"START":^35}', key='start')],        
+    [sg.Output(size=(25, 6))]
 ]
 # janela
 janela = sg.Window('PAR OU IMPAR', layout)
