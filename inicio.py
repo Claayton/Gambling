@@ -4,7 +4,7 @@ from parouimpar import parouimpar
 
 # Criar janelas e estilos (layout)
 def janela_choice():
-    sg.theme('Reddit')
+    sg.theme('Reddift')
     layout = [
         [sg.Button(f'{"JOKENPÔ":^53}', key='JOKENPO')],
         [sg.Button(f'{"PAR OU ÍMPAR":^49}')],     
