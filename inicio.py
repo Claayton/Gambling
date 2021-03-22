@@ -16,7 +16,7 @@ while True:
     if window == janela02 and event == sg.WIN_CLOSED:
         janela01.un_hide()
     if window == janela01 and  event == 'PAROUIMPAR':
-        janlea01.hide()
+        janela01.hide()
         janela03 = parouimpar()
     if window == janela03 and event == sg.WIN_CLOSED:
         janela01.un_hide()
