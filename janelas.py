@@ -1,13 +1,3 @@
-# Janela de início do programa
-def janela01():
-    from PySimpleGUI import PySimpleGUI as sg
-    sg.theme('Reddit')
-    layout = [
-        [sg.Button(f'{"JOKENPÔ":^53}', key='JOKENPO')],
-        [sg.Button(f'{"PAR OU ÍMPAR":^49}', key='PAROUIMPAR')],     
-    ]
-    return sg.Window('JOGOS', layout=layout, finalize=True)
-
 # Janela do primeiro jogo (jokenpo)
 def jokenpo():
     from PySimpleGUI import PySimpleGUI as sg
