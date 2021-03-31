@@ -1,7 +1,7 @@
 from PySimpleGUI import PySimpleGUI as sg
-from janelas import jokenpo
-from janelas import parouimpar
-from janelas import calculadora
+from jokenpo import jokenpo
+from parouimpar import parouimpar
+from calculadora import calculadora
 
 # Janela inicio
 def janela01():
