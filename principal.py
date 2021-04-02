@@ -5,22 +5,32 @@ from calculadora import calculadora
 
 # Janela inicio
 def janela01():
-    from PySimpleGUI import PySimpleGUI as sg
-    sg.theme('DarkPurple2')
+    WIN_W = 80
+    WIN_H = 25
+    filename = None
+
+    sg.theme('Reddit')
     layout = [
-        [sg.Button(f'{"JOKENPÔ":^53}', key='JOKENPO')],
-        [sg.Button(f'{"PAR OU ÍMPAR":^49}', key='PAROUIMPAR')],   
-        [sg.Button(f'{"CALCULADORA":^48}', key='CALCULADORA')],
+        [sg.Text(size=(WIN_W,1),)],
+        [sg.Text('Digite aqui seu nome: ', size=(18, 1), font=("Helvetica", 20)),sg.Input(size=(19, 1), font=("Helvetica", 20))],
+        [sg.Text(size=(12,1), key='-OUTPUT-')],   
+        [sg.Text('Escolha seu Mini-Programa/Mini-Game', font=("Helvetica", 24), relief=sg.RELIEF_RIDGE)],    
+        [sg.Button(f'{"JOKENPÔ":^53}', key='JOKENPO'), sg.Button(f'{"CALCULADORA":^48}', key='CALCULADORA')],
+        [sg.Button(f'{"PAR OU ÍMPAR":^49}', key='PAROUIMPAR'), sg.Button(f'{"-INDEFINED-":^53}', key='-INDEFINED-')],
         [sg.Cancel()]  
     ]
-    return sg.Window('Mini Programas', layout=layout, finalize=True)
+    return sg.Window('Jogramas',
+    layout=layout,
+    resizable=True,
+    return_keyboard_events=True,
+    finalize=True)
 
 # Criar as janelas iniciais
 janela01, janela02, janela03, janela04 = janela01(), None, None, None
 
 # Criar loop para leitura de eventos 
 while True:
-    window, event, valores = sg.read_all_windows()
+    window, event, valores = sg.read_all_windows(timeout=1)
     if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
         break
     if window == janela01 and event == 'JOKENPO':

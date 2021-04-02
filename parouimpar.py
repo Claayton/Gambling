@@ -5,7 +5,7 @@ def parouimpar():
     import os
 
     # layout
-    sg.theme('DarkPurple2')
+    sg.theme('Reddit')
     layout = [
         [sg.Text(f'{"VOCÊ ESCOLHER PAR OU ÍMPAR?":^28}')],
         [sg.Radio(f' {"PAR":^15}', "escolha1", default=True),
