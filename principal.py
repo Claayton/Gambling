@@ -34,3 +34,4 @@ while True:
         janela04 = calculadora()
     if window == janela04 and event == sg.WIN_CLOSED:
         janela01.read()
+        
