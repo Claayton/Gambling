@@ -2,7 +2,7 @@
 def calculadora():
     from PySimpleGUI import PySimpleGUI as sg
     # layout
-    sg.theme('Reddit')
+    sg.theme('DarkPurple2')
     layout = [
 
         [sg.Input(size=(20, 2))], 

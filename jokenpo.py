@@ -9,7 +9,7 @@ def jokenpo():
     possibilidades = ['PEDRA', 'PAPEL', 'TESOURA']
 
     # layout
-    sg.theme('Reddit')
+    sg.theme('DarkPurple2')
     layout = [
         [sg.Button(f'{"PEDRA":^48}', key='PEDRA')],
         [sg.Button(f'{"PAPEL":^49}', key='PAPEL')],

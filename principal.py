@@ -6,11 +6,12 @@ from calculadora import calculadora
 # Janela inicio
 def janela01():
     from PySimpleGUI import PySimpleGUI as sg
-    sg.theme('Reddit')
+    sg.theme('DarkPurple2')
     layout = [
         [sg.Button(f'{"JOKENPÔ":^53}', key='JOKENPO')],
         [sg.Button(f'{"PAR OU ÍMPAR":^49}', key='PAROUIMPAR')],   
-        [sg.Button(f'{"CALCULADORA":^48}', key='CALCULADORA')],  
+        [sg.Button(f'{"CALCULADORA":^48}', key='CALCULADORA')],
+        [sg.Cancel()]  
     ]
     return sg.Window('Mini Programas', layout=layout, finalize=True)
 
@@ -20,7 +21,7 @@ janela01, janela02, janela03, janela04 = janela01(), None, None, None
 # Criar loop para leitura de eventos 
 while True:
     window, event, valores = sg.read_all_windows()
-    if window == janela01 and event == sg.WIN_CLOSED:
+    if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
         break
     if window == janela01 and event == 'JOKENPO':
         janela02 = jokenpo()
@@ -34,4 +35,4 @@ while True:
         janela04 = calculadora()
     if window == janela04 and event == sg.WIN_CLOSED:
         janela01.read()
-        
+window.close()
