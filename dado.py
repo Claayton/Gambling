@@ -10,28 +10,26 @@ def janela01():
     filename = None
 
     layout = [
-        [sg.Image(gif)],
-        [sg.Button(f'{"Jogar o Dado":^48}', key='jogar')],
-        [sg.Cancel()],
-    ]
+        [sg.Button(f'{"JOGAR DADO":^50}', key='jogar'), sg.Cancel()]
+        ]
     return sg.Window('Dado',
     layout=layout,
     resizable=True,
     return_keyboard_events=True,
-    finalize=True)
+    finalize=True,
+    background_color='gray',
+    margins=(0,0))
 
 # Criar as janelas iniciais
-janela01 = janela01()
+window = janela01()
 
 # Criar loop para leitura de eventos 
 while True:
-    window, event, valores = sg.read_all_windows(timeout=1)
+    window, event = window.read()  
     if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
         break
     if window == janela01 and event == 'jogar':
-        while True:
-            [sg.popup_animated(gif,  time_between_frames=50)],
-            if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
-                break
-
+        for i in range(10000):
+            sg.popup_animated(gif, time_between_frames=100, background_color='gray')
+        sg.popup_animated(None)
 window.close()
