@@ -1,7 +1,4 @@
-from time import sleep
 from PySimpleGUI import PySimpleGUI as sg
-
-gif = 'dado_giratorio.gif'
 
 # Janela inicio
 def janela01():
@@ -29,7 +26,5 @@ while True:
     if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
         break
     if window == janela01 and event == 'jogar':
-        for i in range(10000):
-            sg.popup_animated(gif, time_between_frames=100, background_color='gray')
-        sg.popup_animated(None)
+        graph.MoveFigure(my_circle, 10, 10)
 window.close()
