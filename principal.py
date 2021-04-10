@@ -14,7 +14,7 @@ def janela01():
         [sg.Text(size=(12,1), background_color = '#4F4F4F', text_color='white', key='-OUTPUT-')],   
         [sg.Text('\n Escolha seu Mini-Programa/Mini-Game \n ', size=(33, 3), font=("Helvetica", 24), relief=sg.RELIEF_RIDGE, background_color = 'black', text_color='#4F4F4F')],    
         [sg.Button(f'{"JOKENPÔ":^}', key='JOKENPO', size=(38, 1)), sg.Button(f'{"CALCULADORA":^}', key='CALCULADORA', size=(38, 1))],
-        [sg.Button(f'{"PAR OU ÍMPAR":^}', key='PAROUIMPAR', size=(38, 1)), sg.Button(f'{"DADO":^}', key='dado', size=(38, 1))],
+        [sg.Button(f'{"PAR OU ÍMPAR":^}', key='PAROUIMPAR', size=(38, 1)), sg.Button(f'{"DADO":^}', key='DADO', size=(38, 1))],
         [sg.Text(size=(29, 1), background_color = '#4F4F4F'), sg.Cancel(size=(20,1))]  
     ]
     return sg.Window('Jogramas',
@@ -146,9 +146,80 @@ def calculadora():
         if eventos == sg.WINDOW_CLOSED:
             break
 
+# Janela do Dado
+def dado():
+    from PySimpleGUI import PySimpleGUI as sg
+    from random import randint
+
+    # Define a animação
+    def gif():
+        gif = 'image/dadogiratorio.gif'
+        for i in range(20000):
+            sg.popup_animated(gif, no_titlebar=True, time_between_frames=100, background_color = '#4F4F4F')
+        sg.popup_animated(None)
+        return gif
+
+    # Define a janela principal
+    def janela01():
+        WIN_W = 80
+        WIN_H = 25
+        filename = None
+        sg.theme('DarkBlue14')
+        layout = [
+            [sg.Image('image/0.png', background_color = '#4F4F4F')],
+            [sg.Button(f'{"JOGAR DADO":^38}', key='jogar')]
+            ]
+        window = sg.Window('Dado',
+        layout=layout,
+        resizable=True,
+        return_keyboard_events=True,
+        finalize=True,
+        background_color='#4F4F4F',
+        margins=(0,0))
+        return window
+
+    # Define a janela de resultado
+    def janela02():
+        WIN_W = 80
+        WIN_H = 25
+        filename = None
+        resultadoDado = randint(1, 6)
+
+        sg.theme('DarkBlue14')
+        layout = [
+            [sg.Button(f'{"JOGAR NOVAMENTE":^}', key='jogar', size=(29,1))],
+            [sg.Image(f'image/{resultadoDado}.png', background_color = '#4F4F4F')],
+            [sg.Cancel(size=(29,1))],
+            ]
+        window = sg.Window('Dado',
+        layout=layout,
+        resizable=True,
+        return_keyboard_events=True,
+        finalize=True,
+        background_color='#4F4F4F',
+        margins=(0,0),
+        no_titlebar=True)
+        return window
+
+    # Criar as janelas iniciais
+    window = janela01()
+
+    # Criar loop para leitura de eventos 
+    while True:
+        window, event, valores = sg.read_all_windows(timeout=1)
+        if window == window and event in (sg.WIN_CLOSED, 'Cancel'):
+            break
+        if window == window and event == 'jogar':
+            window.hide()
+            gif()
+            janela02()
+    window.close()
+    return window
+    
+# -------------------------------------------------------------------------
 
 # Criar as janelas iniciais
-janela01, janela02, janela03, janela04 = janela01(), None, None, None
+janela01, janela02, janela03, janela04, janlea05 = janela01(), None, None, None, None
 
 # Criar loop para leitura de eventos 
 while True:
