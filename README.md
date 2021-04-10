@@ -1,13 +1,13 @@
 # Mini projetos juntos em um mesmo programa, utilizando **Python** e a biblioteca de interface **PySimpleGui**
-![Tela inicial](https://user-images.githubusercontent.com/76628101/113377021-8187fa00-9349-11eb-8b4b-5b2f66fd006c.png)
+![Tela inicial](https://user-images.githubusercontent.com/76628101/114262333-dfee5180-99b5-11eb-91ac-c02df7d64227.png)
 ---
 ## JOKENPÔ
 * Famoso jogo **JOKENPÔ**, onde o usuário pode jogar contra o computador.
-![Jokenpô](https://user-images.githubusercontent.com/76628101/113377056-9795ba80-9349-11eb-9781-7f000842af67.png)
+![Jokenpo](https://user-images.githubusercontent.com/76628101/114262400-25ab1a00-99b6-11eb-8a7a-72b1b76f546e.png)
 ---
 ## PAR OU ÍMPAR
 * Jogo de **Par ou Ìmpar**, onde o usuário pode jogar contra o computador, e ele mostra a quantidade de vitórias seguidas o jogador obteve
-![par-ou-ímpar](https://user-images.githubusercontent.com/76628101/113377078-a7150380-9349-11eb-9318-0bf06a48f4a4.png)
+![parouimpar](https://user-images.githubusercontent.com/76628101/114262410-365b9000-99b6-11eb-9d90-d44a192d8fb5.png)
 ---
 ## CALCULADORA
 (projeto em andamento)
