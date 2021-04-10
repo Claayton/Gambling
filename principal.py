@@ -6,21 +6,24 @@ def janela01():
     WIN_H = 25
     filename = None
 
-    sg.theme('Reddit')
+    sg.theme('DarkBlue14')
     layout = [
-        [sg.Text(size=(WIN_W,1),)],
-        [sg.Text('Digite aqui seu nome: ', size=(18, 1), font=("Helvetica", 20)),sg.Input(size=(19, 1), font=("Helvetica", 20))],
-        [sg.Text(size=(12,1), key='-OUTPUT-')],   
-        [sg.Text('Escolha seu Mini-Programa/Mini-Game', font=("Helvetica", 24), relief=sg.RELIEF_RIDGE)],    
-        [sg.Button(f'{"JOKENPÔ":^53}', key='JOKENPO'), sg.Button(f'{"CALCULADORA":^48}', key='CALCULADORA')],
-        [sg.Button(f'{"PAR OU ÍMPAR":^49}', key='PAROUIMPAR'), sg.Button(f'{"-INDEFINED-":^53}', key='-INDEFINED-')],
-        [sg.Cancel()]  
+        [sg.Text(size=(WIN_W,1), background_color = '#4F4F4F')],
+        [sg.Text('Digite aqui seu nome: ', size=(18, 1), font=("Helvetica", 20), background_color = '#4F4F4F', text_color='white')
+        ,sg.Input(size=(20, 1), font=("Helvetica", 20), background_color = 'white', text_color='black')],
+        [sg.Text(size=(12,1), background_color = '#4F4F4F', text_color='white', key='-OUTPUT-')],   
+        [sg.Text('\n Escolha seu Mini-Programa/Mini-Game \n ', size=(33, 3), font=("Helvetica", 24), relief=sg.RELIEF_RIDGE, background_color = 'black', text_color='#4F4F4F')],    
+        [sg.Button(f'{"JOKENPÔ":^}', key='JOKENPO', size=(38, 1)), sg.Button(f'{"CALCULADORA":^}', key='CALCULADORA', size=(38, 1))],
+        [sg.Button(f'{"PAR OU ÍMPAR":^}', key='PAROUIMPAR', size=(38, 1)), sg.Button(f'{"DADO":^}', key='dado', size=(38, 1))],
+        [sg.Text(size=(29, 1), background_color = '#4F4F4F'), sg.Cancel(size=(20,1))]  
     ]
     return sg.Window('Jogramas',
     layout=layout,
     resizable=True,
     return_keyboard_events=True,
-    finalize=True)
+    finalize=True,
+    background_color = '#4F4F4F')
+
 # Janela Jokenpo
 def jokenpo():
     from PySimpleGUI import PySimpleGUI as sg
@@ -33,14 +36,14 @@ def jokenpo():
     possibilidades = ['PEDRA', 'PAPEL', 'TESOURA']
 
     # layout
-    sg.theme('Reddit')
+    sg.theme('DarkBlue14')
     layout = [
         [sg.Button(f'{"PEDRA":^48}', key='PEDRA')],
         [sg.Button(f'{"PAPEL":^49}', key='PAPEL')],
         [sg.Button(f'{"TESOURA":^46}', key='TESOURA')],        
     ]
     # janela
-    janela = sg.Window('JOKENPÔ', layout)
+    janela = sg.Window('JOKENPÔ', layout, background_color = '#4F4F4F')
 
     # ler eventos 
     while True:
@@ -62,10 +65,12 @@ def jokenpo():
             else:
                 result = 'PERDEU, TENTE NOVAMENTE!'
             if eventos == 'PEDRA' or eventos == 'PAPEL' or eventos == 'TESOURA':
-                sg.popup(f'{"JO":-^40}', title = 'JO', auto_close = True, auto_close_duration = 0.5, text_color = 'red')
-                sg.popup(f'{"KEN":-^40}', title = 'KEN', auto_close = True, auto_close_duration = 0.5, text_color = 'red')
-                sg.popup(f'{"PÔ":-^40}', title = 'PÔ', auto_close = True, auto_close_duration = 0.5, text_color = 'red')
-                sg.popup(f'Você escolheu: {p1escolha}\nE o computador escolheu: {pcescolha}\n{result}', title = 'RESULTADO')
+                janela.hide()
+                sg.popup(f'{"JO":-^40}', title = 'JO', auto_close = True, auto_close_duration = 0.5, no_titlebar=True, background_color = '#4F4F4F')
+                sg.popup(f'{"KEN":-^40}', title = 'KEN', auto_close = True, auto_close_duration = 0.5, no_titlebar=True, background_color = '#4F4F4F')
+                sg.popup(f'{"PÔ":-^40}', title = 'PÔ', auto_close = True, auto_close_duration = 0.5, no_titlebar=True, background_color = '#4F4F4F')
+                sg.popup(f'Você escolheu: {p1escolha}\nE o computador escolheu: {pcescolha}\n{result}', title = 'RESULTADO', no_titlebar=True, background_color = '#4F4F4F')
+                janela.UnHide()
             break 
     return(sg.Window('JOKENPÔ', finalize=True))
 
@@ -76,16 +81,16 @@ def parouimpar():
     import os
 
     # layout
-    sg.theme('Reddit')
+    sg.theme('DarkBlue14')
     layout = [
-        [sg.Text(f'{"VOCÊ ESCOLHER PAR OU ÍMPAR?":^28}')],
-        [sg.Radio(f' {"PAR":^15}', "escolha1", default=True),
-        sg.Radio(f' {"IMPAR":^15}', "escolha1")],
-        [sg.Text('Digite seu número aqui: '), sg.Input(size=(9, 1))],
+        [sg.Text(f'{"VOCÊ ESCOLHER PAR OU ÍMPAR?":^28}', background_color = '#4F4F4F')],
+        [sg.Radio(f' {"PAR":^15}', "escolha1", default=True, background_color = '#4F4F4F'),
+        sg.Radio(f' {"IMPAR":^15}', "escolha1", background_color = '#4F4F4F')],
+        [sg.Text('Digite seu número aqui: ', background_color = '#4F4F4F'), sg.Input(size=(9, 1))],
         [sg.Button(f'{"START":^44}')],
     ]
     # janela
-    janela = sg.Window('PAR OU IMPAR', layout)
+    janela = sg.Window('PAR OU IMPAR', layout, background_color = '#4F4F4F')
 
     # ler eventos 
     cont = 0
@@ -107,10 +112,14 @@ def parouimpar():
             else:
                 result = 'IMPAR'  
             if usu_choose == result:
-                sg.popup(f'Voce escolheu o numero {valores[2]}\nPC escolheu o numero: {pc_number}\nA soma foi: {sum} ({result})\nSua escolha: {usu_choose}\nEscolha do PC: {pc_choose}\n{"GANHOU, JOGUE NOVAMENTE!":^20}', title = 'GANHOU', text_color = 'green')
+                janela.hide()
+                sg.popup(f'Voce escolheu o numero {valores[2]}\nPC escolheu o numero: {pc_number}\nA soma foi: {sum} ({result})\nSua escolha: {usu_choose}\nEscolha do PC: {pc_choose}\n{"GANHOU, JOGUE NOVAMENTE!":^20}', title = 'GANHOU', text_color = 'green', background_color = '#4F4F4F', no_titlebar=True)
+                janela.UnHide()
                 cont += 1
             else:
-                sg.popup(f'Voce escolheu o numero {valores[2]}\nPC escolheu o numero: {pc_number}\nA soma foi: {sum} ({result})\nSua escolha: {usu_choose}\nEscolha do PC: {pc_choose}\n{"PERDEU OTARIO!":^20}\nVocẽ GANHOU {cont} vezes.', title = 'PERDEU', text_color = 'red')
+                janela.hide()
+                sg.popup(f'Voce escolheu o numero {valores[2]}\nPC escolheu o numero: {pc_number}\nA soma foi: {sum} ({result})\nSua escolha: {usu_choose}\nEscolha do PC: {pc_choose}\n{"PERDEU OTARIO!":^20}\nVocẽ GANHOU {cont} vezes.', title = 'PERDEU', text_color = 'red', background_color = '#4F4F4F', no_titlebar=True)
+                janela.UnHide()
                 cont = 0
             break
     return(sg.Window('PAR OU ÍMPAR', finalize=True))
@@ -119,7 +128,7 @@ def parouimpar():
 def calculadora():
     from PySimpleGUI import PySimpleGUI as sg
     # layout
-    sg.theme('Reddit')
+    sg.theme('DarkBlue14')
     layout = [
 
         [sg.Input(size=(20, 2))], 
@@ -129,7 +138,7 @@ def calculadora():
         [sg.Button(f'{"0":^3}', key='0'), sg.Button(f'{".":^4}', key='.'), sg.Button(f'{"=":^3}', key='='), sg.Button(f'{"+":^3}', key='+')]
     ]
     # janela
-    janela = sg.Window('Calculadora', layout)
+    janela = sg.Window('Calculadora', layout, background_color = '#4F4F4F')
 
     # ler eventos 
     while True:
@@ -147,15 +156,19 @@ while True:
     if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
         break
     if window == janela01 and event == 'JOKENPO':
+        janela01.hide()
         janela02 = jokenpo()
-    if window == janela02 and event == sg.WIN_CLOSED:
-        janela01 = sg.janela01()
+        janela01.UnHide()
     if window == janela01 and  event == 'PAROUIMPAR':
+        janela01.hide()
         janela03 = parouimpar()
-    if window == janela03 and event == sg.WIN_CLOSED:
-        janela01.read()
+        janela01.UnHide()
     if window == janela01 and  event == 'CALCULADORA':
+        janela01.hide()
         janela04 = calculadora()
-    if window == janela04 and event == sg.WIN_CLOSED:
-        janela01.read()
+        janela01.UnHide()
+    if window == janela01 and event == 'DADO':
+        janela01.hide()
+        janela05 = dado()
+        janela01.UnHide()
 window.close()
