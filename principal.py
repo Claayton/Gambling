@@ -1,5 +1,5 @@
 from PySimpleGUI import PySimpleGUI as sg
-from jokenpo import jokenpo
+# from jokenpo import jokenpo
 
 # Janela inicio
 def janela01():
@@ -23,7 +23,7 @@ def janela01():
     resizable=True,
     return_keyboard_events=True,
     finalize=True,
-    icon= 'image/icon_main.png',
+    icon= 'image/icons/icon_main.png',
     background_color = '#272828')
 
 # Janela do segundo jogo (par ou impar)
@@ -45,7 +45,7 @@ def parouimpar():
     janela = sg.Window('PAR OU IMPAR',
     layout,
     background_color = '#4F4F4F',
-    icon= 'image/icon_parouimpar.png'
+    icon= 'image/icons/icon_parouimpar.png'
     )
 
     # ler eventos 
@@ -109,7 +109,7 @@ def dado():
 
     # Define a animação
     def gif():
-        gif = 'image/dadogiratorio.gif'
+        gif = 'image/dado/dadogiratorio.gif'
         for i in range(20000):
             sg.popup_animated(gif, no_titlebar=True, time_between_frames=100, background_color = '#4F4F4F')
         sg.popup_animated(None)
@@ -122,7 +122,7 @@ def dado():
         filename = None
         sg.theme('DarkBlue14')
         layout = [
-            [sg.Image('image/0.png', background_color = '#4F4F4F')],
+            [sg.Image('image/dado/0.png', background_color = '#4F4F4F')],
             [sg.Button(f'{"JOGAR DADO":^38}', key='jogar')]
             ]
         window = sg.Window('Dado',
@@ -131,7 +131,7 @@ def dado():
         return_keyboard_events=True,
         finalize=True,
         background_color='#4F4F4F',
-        icon= 'image/0.png',
+        icon= 'image/dado/0.png',
         margins=(0,0))
         return window
 
@@ -145,7 +145,7 @@ def dado():
         sg.theme('DarkBlue14')
         layout = [
             [sg.Button(f'{"JOGAR NOVAMENTE":^}', key='jogar', size=(29,1))],
-            [sg.Image(f'image/{resultadoDado}.png', background_color = '#4F4F4F')],
+            [sg.Image(f'image/dado/{resultadoDado}.png', background_color = '#4F4F4F')],
             [sg.Cancel(size=(29,1))],
             ]
         window = sg.Window('Dado',
