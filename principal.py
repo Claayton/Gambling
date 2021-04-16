@@ -1,5 +1,5 @@
 from PySimpleGUI import PySimpleGUI as sg
-# from jokenpo import jokenpo
+from jokenpo import jokenpo
 
 # Janela inicio
 def janela01():
