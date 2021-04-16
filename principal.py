@@ -22,6 +22,7 @@ def janela01():
     resizable=True,
     return_keyboard_events=True,
     finalize=True,
+    icon= 'image/icon_main.png',
     background_color = '#272828')
 
 # Janela Jokenpo
@@ -43,7 +44,17 @@ def jokenpo():
         [sg.Button(f'{"TESOURA":^46}', key='TESOURA')],        
     ]
     # janela
-    janela = sg.Window('JOKENPÔ', layout, background_color = '#4F4F4F')
+    janela = sg.Window('JOKENPÔ',
+    layout,
+    background_color = '#4F4F4F',
+    icon= 'image/icon_jokenpo.png')
+
+    def gif():
+        gif = 'image/jokenpo2.gif'
+        for i in range(40000):
+            sg.popup_animated(gif, no_titlebar=True, time_between_frames=100, background_color = '#4F4F4F')
+        sg.popup_animated(None)
+        return gif
 
     # ler eventos 
     while True:
@@ -66,9 +77,7 @@ def jokenpo():
                 result = 'PERDEU, TENTE NOVAMENTE!'
             if eventos == 'PEDRA' or eventos == 'PAPEL' or eventos == 'TESOURA':
                 janela.hide()
-                sg.popup(f'{"JO":-^40}', title = 'JO', auto_close = True, auto_close_duration = 0.5, no_titlebar=True, background_color = '#4F4F4F')
-                sg.popup(f'{"KEN":-^40}', title = 'KEN', auto_close = True, auto_close_duration = 0.5, no_titlebar=True, background_color = '#4F4F4F')
-                sg.popup(f'{"PÔ":-^40}', title = 'PÔ', auto_close = True, auto_close_duration = 0.5, no_titlebar=True, background_color = '#4F4F4F')
+                gif()
                 sg.popup(f'Você escolheu: {p1escolha}\nE o computador escolheu: {pcescolha}\n{result}', title = 'RESULTADO', no_titlebar=True, background_color = '#4F4F4F')
                 janela.UnHide()
             break 
@@ -90,7 +99,11 @@ def parouimpar():
         [sg.Button(f'{"START":^44}')],
     ]
     # janela
-    janela = sg.Window('PAR OU IMPAR', layout, background_color = '#4F4F4F')
+    janela = sg.Window('PAR OU IMPAR',
+    layout,
+    background_color = '#4F4F4F',
+    icon= 'image/icon_parouimpar.png'
+    )
 
     # ler eventos 
     cont = 0
@@ -175,6 +188,7 @@ def dado():
         return_keyboard_events=True,
         finalize=True,
         background_color='#4F4F4F',
+        icon= 'image/0.png',
         margins=(0,0))
         return window
 
