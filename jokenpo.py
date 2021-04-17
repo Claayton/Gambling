@@ -12,9 +12,12 @@ def jokenpo():
     # layout
     sg.theme('DarkBlue14')
     layout = [
-        [sg.Button(f'{"PEDRA":^48}', key='PEDRA')],
-        [sg.Button(f'{"PAPEL":^49}', key='PAPEL')],
-        [sg.Button(f'{"TESOURA":^46}', key='TESOURA')],        
+        [sg.Button(f'{"PEDRA":^}', key='PEDRA', size=(38, 3))],
+        [sg.Button(f'{"PAPEL":^}', key='PAPEL', size=(38, 3))],
+        [sg.Button(f'{"TESOURA":^}', key='TESOURA', size=(38, 3))],
+        [sg.Image('image/pedra.png', background_color = '#4F4F4F'),
+        sg.Image('image/papel.png', background_color = '#4F4F4F'),
+        sg.Image('image/tesoura.png', background_color = '#4F4F4F')],       
     ]
     # janela
     window = sg.Window('JOKENPÔ',
