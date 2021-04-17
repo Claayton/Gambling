@@ -1,6 +1,5 @@
 from PySimpleGUI import PySimpleGUI as sg
 from jokenpo import jokenpo
-import buttons
 
 # Janela inicio
 def janela01():
@@ -102,6 +101,7 @@ def calculadora():
         eventos, valores = janela.read()
         if eventos == sg.WINDOW_CLOSED:
             break
+        window.close()
 
 # Janela do Dado
 def dado():
