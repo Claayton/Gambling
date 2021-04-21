@@ -34,8 +34,8 @@ def jogar():
                 no_titlebar=True,
                 time_between_frames=100,
                 background_color = '#4F4F4F')
-        sg.popup_animated(None)
         break
+    return sg.popup_animated(None)
 
 def resultado():
     WIN_W = 80
@@ -58,6 +58,7 @@ def resultado():
 
 # Criar as janelas iniciais
 janela01 = jokenpo_inicio()
+janlea02 = None
 
 # ler eventos 
 while True:
@@ -115,12 +116,7 @@ while True:
         if eventos in ('PEDRA', 'PAPEL', 'TESOURA'):
             janela01.Hide()
             jogar()
-            while True:
-                janela02 = resultado()
-                eventos, values = janela02.read()
-                if eventos == 'JOGAR':
-                    break
-        janela02.Hide()
-        janela01.UnHide()          
-   # janela01.close()
-   # janela02.close()
+            janela02 = resultado()
+        if eventos == 'JOGAR':
+            janela02.Hide()
+            janela01.UnHide()          
