@@ -115,15 +115,12 @@ while True:
         if eventos in ('PEDRA', 'PAPEL', 'TESOURA'):
             janela01.Hide()
             jogar()
-            janela02 = resultado()
             while True:
+                janela02 = resultado()
                 eventos, values = janela02.read()
                 if eventos == 'JOGAR':
                     break
-                if eventos in (sg.WIN_CLOSED, 'Cancel'):
-                    break 
         janela02.Hide()
-        janela01.UnHide()
-                    
+        janela01.UnHide()          
    # janela01.close()
    # janela02.close()
