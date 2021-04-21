@@ -1,5 +1,6 @@
 from PySimpleGUI import PySimpleGUI as sg
 from random import choice
+from time import sleep
 import buttons
 
 p1escolha = ''
@@ -19,27 +20,32 @@ def jokenpo_inicio():
     ]
 
     # janela
-    return sg.Window('JOKENPÔ', layout, background_color = '#4F4F4F', icon= 'image/icons/icon_jokenpo.png', size=(360, 200), finalize=True)
+    return sg.Window('JOKENPÔ',
+    layout, background_color = '#4F4F4F',
+    icon= 'image/icons/icon_jokenpo.png',
+    size=(360, 200),
+    finalize=True)
 
 def jogar():
-    for i in range(20000):
-        sg.popup_animated(
-            gif,
-            no_titlebar=True,
-            time_between_frames=100,
-            background_color = '#4F4F4F')
-    return sg.popup_animated(None)
+    while True:
+        for i in range(20000):
+            sg.popup_animated(
+                gif,
+                no_titlebar=True,
+                time_between_frames=100,
+                background_color = '#4F4F4F')
+        sg.popup_animated(None)
+        break
 
 def resultado():
     WIN_W = 80
     WIN_H = 25
-    filename = None
 
     sg.theme('DarkBlue14')
     layout = [
-        [sg.Button(f'{"JOGAR NOVAMENTE":^}', key='jogar', size=(40,3))],
+        [sg.Button(f'{"JOGAR NOVAMENTE":^}', key='JOGAR', size=(40,3))],
         [sg.Image(png, background_color = '#4F4F4F')],
-        [sg.Cancel(size=(40,3), key='cancel')],
+        [sg.Cancel(size=(40,3))],
         ]
     return sg.Window('Jokenpo',
     layout=layout,
@@ -105,15 +111,19 @@ while True:
             gif = 'image/jokenpo_gif/tesoura_pedra.gif'
             png = 'image/jokenpo_png/tesoura_pedra_result.png'
             result = 'Perdeu'
-
+    
         if eventos in ('PEDRA', 'PAPEL', 'TESOURA'):
-            janela01.hide()
+            janela01.Hide()
             jogar()
-            janela01.close()
-    janela02 = resultado()
-    janela02.read()
-    if eventos == 'jogar':
+            janela02 = resultado()
+            while True:
+                eventos, values = janela02.read()
+                if eventos == 'JOGAR':
+                    break
+                if eventos in (sg.WIN_CLOSED, 'Cancel'):
+                    break 
+        janela02.Hide()
         janela01.UnHide()
-    if eventos in (sg.WIN_CLOSED, 'cancel'):
-        break
-    window.close()
+                    
+   # janela01.close()
+   # janela02.close()
