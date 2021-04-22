@@ -14,7 +14,7 @@ def janela01():
         ,sg.Input(size=(20, 1), font=("Helvetica", 20), background_color = '#2f3030', text_color='white')],
         [sg.Text(size=(12,1), background_color = '#272828', text_color='white', key='-OUTPUT-')],   
         [sg.Text('\n Escolha seu Mini-Programa/Mini-Game \n ', size=(33, 3), font=("Helvetica", 24), relief=sg.RELIEF_RIDGE, background_color = 'black', text_color='#4F4F4F')],    
-        [sg.Button(f'{"JOKENPÔ":^}', key='JOKENPO', size=(38, 1)), sg.Button(f'{"CALCULADORA":^}', key='CALCULADORA', size=(38, 1))],
+        [sg.Button(f'{"JOKENPÔ":^}', key='JOKENPO', size=(38, 1)), sg.Button(f'{"default":^}', key='default', size=(38, 1))],
         [sg.Button(f'{"PAR OU ÍMPAR":^}', key='PAROUIMPAR', size=(38, 1)), sg.Button(f'{"DADO":^}', key='DADO', size=(38, 1))],
         [sg.Text(size=(29, 1), background_color = '#272828'), sg.Cancel(size=(20,1))]  
     ]
@@ -79,29 +79,6 @@ def parouimpar():
                 cont = 0
             break
     return(sg.Window('PAR OU ÍMPAR', finalize=True))
-
-# Janela da calculadora
-def calculadora():
-    from PySimpleGUI import PySimpleGUI as sg
-    # layout
-    sg.theme('DarkBlue14')
-    layout = [
-
-        [sg.Input(size=(20, 2))], 
-        [sg.Button(f'{"7":^3}', key='7'), sg.Button(f'{"8":^3}', key='8'), sg.Button(f'{"9":^3}', key='9'), sg.Button(f'{"/":^3}', key='/')],
-        [sg.Button(f'{"6":^3}', key='6'), sg.Button(f'{"5":^3}', key='5'), sg.Button(f'{"4":^3}', key='4'), sg.Button(f'{"*":^3}', key='*')],
-        [sg.Button(f'{"1":^3}', key='1'), sg.Button(f'{"2":^3}', key='2'), sg.Button(f'{"3":^3}', key='3'), sg.Button(f'{"-":^3}', key='-')],
-        [sg.Button(f'{"0":^3}', key='0'), sg.Button(f'{".":^4}', key='.'), sg.Button(f'{"=":^3}', key='='), sg.Button(f'{"+":^3}', key='+')]
-    ]
-    # janela
-    janela = sg.Window('Calculadora', layout, background_color = '#4F4F4F')
-
-    # ler eventos 
-    while True:
-        eventos, valores = janela.read()
-        if eventos == sg.WINDOW_CLOSED:
-            break
-        window.close()
 
 # Janela do Dado
 def dado():
