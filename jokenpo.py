@@ -116,8 +116,10 @@ def jokenpo():
 
         if window == janela01 and eventos in ('PEDRA', 'PAPEL', 'TESOURA'):
             janela01.Hide()
-            jogar()
             janela02 = resultado()
+            janela02.Hide()
+            jogar()
+            janela02.UnHide()
         if window == janela02 and eventos == 'JOGAR':
             janela02.Hide()
             janela01.UnHide()
