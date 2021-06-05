@@ -169,9 +169,9 @@ while True:
         janela01.hide()
         janela03 = parouimpar()
         janela01.UnHide()
-    if window == janela01 and  event == 'CALCULADORA':
+    if window == janela01 and  event == 'default':
         janela01.hide()
-        janela04 = calculadora()
+        janela04 = 'default'
         janela01.UnHide()
     if window == janela01 and event == 'DADO':
         janela01.hide()
