@@ -12,7 +12,6 @@ def janela01():
     WIN_H = 25
     filename = None
 
-
     sg.theme('DarkBlue14')
     layout = [
         [sg.Text(size=(WIN_W,1), background_color = '#272828')],
@@ -24,6 +23,7 @@ def janela01():
         [sg.Button(f'{"DADO":^}', key='DADO', size=(38, 1)), sg.Button(f'{"default":^}', key='default', size=(38, 1))],
         [sg.Text(size=(29, 1), background_color = '#272828'), sg.Cancel(size=(20,1))]  
     ]
+
     return sg.Window('Jogramas',
     layout=layout,
     resizable=True,
@@ -32,12 +32,15 @@ def janela01():
     icon= 'image/icons/icon_main.png',
     background_color = '#272828')
 
-# -------------------------------------------------------------------------
 
+# -------------------------------------------------------------------------
 # Criar as janelas iniciais
+
 janela01, janela02, janela03, janela04, janlea05 = janela01(), None, None, None, None
 
+# -------------------------------------------------------------------------
 # Criar loop para leitura de eventos 
+
 while True:
     window, event, valores = sg.read_all_windows(timeout=1)
     if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
@@ -50,12 +53,12 @@ while True:
         janela01.hide()
         janela03 = parouimpar()
         janela01.UnHide()
-    if window == janela01 and  event == 'default':
-        janela01.hide()
-        janela04 = 'default'
-        janela01.UnHide()
     if window == janela01 and event == 'DADO':
         janela01.hide()
         janela05 = dado()
+        janela01.UnHide()    
+    if window == janela01 and  event == 'default':
+        janela01.hide()
+        janela04 = 'default'
         janela01.UnHide()
 window.close()
