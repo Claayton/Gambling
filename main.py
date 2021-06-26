@@ -10,7 +10,6 @@ from parouimpar import parouimpar
 def janela01():
     WIN_W = 80
     WIN_H = 25
-    filename = None
 
     sg.theme('DarkBlue14')
     layout = [
