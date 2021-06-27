@@ -14,14 +14,17 @@ def janela01():
 
     sg.theme('DarkBlue14')
     layout = [
-        [sg.Text(size=(WIN_W,1), background_color = '#272828')],
-        [sg.Text('Digite aqui seu nome: ', size=(18, 1), font=("Helvetica", 20), background_color = '#272828', text_color='white')
-        ,sg.Input(size=(20, 1), font=("Helvetica", 20), background_color = '#2f3030', text_color='white')],
-        [sg.Text(size=(12,1), background_color = '#272828', text_color='white', key='-OUTPUT-')],   
-        [sg.Text('\n Escolha seu Mini-Programa/Mini-Game \n ', size=(33, 3), font=("Helvetica", 24), relief=sg.RELIEF_RIDGE, background_color = 'black', text_color='#4F4F4F')],    
-        [sg.Button('', image_data=buttons.button_jokenpo, key='JOKENPO', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5), sg.Button(f'{"PAR OU ÍMPAR":^}', key='PAROUIMPAR', size=(38, 1))],
-        [sg.Button(f'{"DADO":^}', key='DADO', size=(38, 1)), sg.Button(f'{"default":^}', key='default', size=(38, 1))],
-        [sg.Text(size=(29, 1), background_color = '#272828'), sg.Cancel(size=(20,1))]  
+        [sg.Canvas(background_color='black', size=(650, 10), pad=None)],
+        [sg.Text(' \n           TESTE SUA SORTE\n ', size=(26, 3), font=("modak", 30), background_color = '#272828', text_color='white')],    
+        [sg.Canvas(background_color='black', size=(650, 10), pad=None)],
+        [sg.Canvas(background_color='#272828', size=(30, 10), pad=None), 
+        sg.Button('', image_data=buttons.button_jokenpo, key='JOKENPO', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
+        sg.Canvas(background_color='#272828', size=(30, 10), pad=None), 
+        sg.Button('', image_data=buttons.button_jokenpo, key='PAROUIMPAR', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
+        sg.Canvas(background_color='#272828', size=(30, 10), pad=None), 
+        sg.Button('', image_data=buttons.button_jokenpo, key='DADO', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
+        sg.Canvas(background_color='#272828', size=(30, 10), pad=None)],
+        [sg.Canvas(background_color='black', size=(650, 10), pad=None)]
     ]
 
     return sg.Window('Jogramas',
