@@ -15,15 +15,15 @@ def janela01():
     sg.theme('DarkBlue14')
     layout = [
         [sg.Canvas(background_color='black', size=(650, 10), pad=None)],
-        [sg.Text(' \n           TESTE SUA SORTE\n ', size=(26, 3), font=("modak", 30), background_color = '#272828', text_color='white')],    
+        [sg.Text(' \n           TESTE SUA SORTE\n ', size=(26, 3), font=('mood', 30), background_color = '#272828', text_color='white')],    
         [sg.Canvas(background_color='black', size=(650, 10), pad=None)],
-        [sg.Canvas(background_color='#272828', size=(30, 10), pad=None), 
+        [sg.Canvas(background_color='#272828', size=(30, 150), pad=None),
         sg.Button('', image_data=buttons.button_jokenpo, key='JOKENPO', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
-        sg.Canvas(background_color='#272828', size=(30, 10), pad=None), 
-        sg.Button('', image_data=buttons.button_jokenpo, key='PAROUIMPAR', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
-        sg.Canvas(background_color='#272828', size=(30, 10), pad=None), 
-        sg.Button('', image_data=buttons.button_jokenpo, key='DADO', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
-        sg.Canvas(background_color='#272828', size=(30, 10), pad=None)],
+        sg.Canvas(background_color='#272828', size=(30, 150), pad=None), 
+        sg.Button('', image_data=buttons.button_poui64, key='PAROUIMPAR', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
+        sg.Canvas(background_color='#272828', size=(30, 150), pad=None), 
+        sg.Button('', image_data=buttons.button_dado64, key='DADO', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
+        sg.Canvas(background_color='#272828', size=(30, 150), pad=None)],
         [sg.Canvas(background_color='black', size=(650, 10), pad=None)]
     ]
 
