@@ -2,13 +2,14 @@ from PySimpleGUI import PySimpleGUI as sg
 from jokenpo import jokenpo
 from dado import dado
 from parouimpar import parouimpar
+from recorde import recorde
 import buttons
 
 # -------------------------------------------------------------------------
 # Janela inicial
 
 
-def janela01():
+def janela_inicio():
     WIN_W = 80
     WIN_H = 25
 
@@ -39,29 +40,27 @@ def janela01():
 # -------------------------------------------------------------------------
 # Criar as janelas iniciais
 
-janela01, janela02, janela03, janela04, janlea05 = janela01(), None, None, None, None
+janela01, janela02, janela03, janela04, janela05 = recorde(), None, None, None, None
 
 # -------------------------------------------------------------------------
 # Criar loop para leitura de eventos 
 
 while True:
     window, event, valores = sg.read_all_windows(timeout=1)
-    if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
+    if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel', 'Enter'):
+        janela02 = janela_inicio()
+    if window == janela02 and event in (sg.WIN_CLOSED, 'Cancel'):
         break
-    if window == janela01 and event == 'JOKENPO':
-        janela01.hide()
-        janela02 = jokenpo()
-        janela01.UnHide()
-    if window == janela01 and  event == 'PAROUIMPAR':
-        janela01.hide()
-        janela03 = parouimpar()
-        janela01.UnHide()
-    if window == janela01 and event == 'DADO':
-        janela01.hide()
+    if window == janela02 and event == 'JOKENPO':
+        janela02.hide()
+        janela03 = jokenpo()
+        janela02.UnHide()
+    if window == janela02 and  event == 'PAROUIMPAR':
+        janela02.hide()
+        janela04 = parouimpar()
+        janela02.UnHide()
+    if window == janela02 and event == 'DADO':
+        janela02.hide()
         janela05 = dado()
-        janela01.UnHide()    
-    if window == janela01 and  event == 'default':
-        janela01.hide()
-        janela04 = 'default'
-        janela01.UnHide()
+        janela02.UnHide()
 window.close()
