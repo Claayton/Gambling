@@ -39,3 +39,6 @@ def recorde():
             print(nome)
             break
     window.close()
+
+    return sg.window('Nome', finalize=True)
+    
