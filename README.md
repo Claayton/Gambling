@@ -5,7 +5,7 @@
 ## JOKENPÔ
 * Famoso jogo **JOKENPÔ**, onde o usuário pode jogar contra o computador.
 
-![Jokenpo Inicio](https://user-images.githubusercontent.com/76628101/115789215-258a2180-a39b-11eb-96de-88b1603b2b74.png)
+![Jokenpo Inicio](https://user-images.githubusercontent.com/76628101/123559487-af2ae680-d772-11eb-8a86-05494a55b8d2.png)
 
 ![Jokenpo Fim](https://user-images.githubusercontent.com/76628101/115789235-333fa700-a39b-11eb-92af-00107d0b66e6.png)
 
