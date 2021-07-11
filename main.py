@@ -33,7 +33,7 @@ def janela_inicio():
     resizable=True,
     return_keyboard_events=True,
     finalize=True,
-    icon= 'image/icons/icon_main.png',
+    icon= 'imagens/icon_main.png',
     background_color = '#272828')
 
 

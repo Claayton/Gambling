@@ -4,7 +4,7 @@ def dado():
 
     # Define a animação
     def gif():
-        gif = 'image/dado/dadogiratorio.gif'
+        gif = 'imagens/dado/dadogiratorio.gif'
         for i in range(20000):
             sg.popup_animated(gif, no_titlebar=True, time_between_frames=100, background_color = '#4F4F4F')
         sg.popup_animated(None)
@@ -17,7 +17,7 @@ def dado():
         filename = None
         sg.theme('DarkBlue14')
         layout = [
-            [sg.Image('image/dado/0.png', background_color = '#4F4F4F')],
+            [sg.Image('imagens/dado/0.png', background_color = '#4F4F4F')],
             [sg.Button(f'{"JOGAR DADO":^38}', key='jogar')]
             ]
         window = sg.Window('Dado',
@@ -26,7 +26,7 @@ def dado():
         return_keyboard_events=True,
         finalize=True,
         background_color='#4F4F4F',
-        icon= 'image/dado/0.png',
+        icon= 'imagens/dado/0.png',
         margins=(0,0))
         return window
 
@@ -40,7 +40,7 @@ def dado():
         sg.theme('DarkBlue14')
         layout = [
             [sg.Button(f'{"JOGAR NOVAMENTE":^}', key='jogar', size=(29,1))],
-            [sg.Image(f'image/dado/{resultadoDado}.png', background_color = '#4F4F4F')],
+            [sg.Image(f'imagens/dado/{resultadoDado}.png', background_color = '#4F4F4F')],
             [sg.Cancel(size=(29,1))],
             ]
         window = sg.Window('Dado',

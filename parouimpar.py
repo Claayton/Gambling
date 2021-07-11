@@ -1,22 +1,23 @@
 def parouimpar(): 
     from PySimpleGUI import PySimpleGUI as sg
     from random import randint
-    import os
 
     # layout
     sg.theme('DarkBlue14')
-    layout = [
+    layout1 = [
         [sg.Text(f'{"VOCÊ ESCOLHER PAR OU ÍMPAR?":^28}', background_color = '#4F4F4F')],
         [sg.Radio(f' {"PAR":^15}', "escolha1", default=True, background_color = '#4F4F4F'),
         sg.Radio(f' {"IMPAR":^15}', "escolha1", background_color = '#4F4F4F')],
         [sg.Text('Digite seu número aqui: ', background_color = '#4F4F4F'), sg.Input(size=(9, 1))],
-        [sg.Button(f'{"START":^44}')],
+        [sg.Button(f'{"Enter":^44}')],
     ]
+
+    layout = layout1
     # janela
     janela = sg.Window('PAR OU IMPAR',
     layout,
     background_color = '#4F4F4F',
-    icon= 'image/icons/icon_parouimpar.png'
+    icon= 'imagens/parouimpar/icon_parouimpar.png'
     )
 
     # ler eventos 

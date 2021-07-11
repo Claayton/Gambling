@@ -23,7 +23,7 @@ def jokenpo():
         # janela
         return sg.Window('JOKENPÔ',
         layout, background_color = '#4F4F4F',
-        icon= 'image/icons/icon_jokenpo.png',
+        icon= 'imagens/jokenpo/icon_jokenpo.png',
         size=(360, 200),
         finalize=True)
 
@@ -76,42 +76,42 @@ def jokenpo():
         pcescolha = choice(possibilidades)
         
         if pcescolha == 'PEDRA' and p1escolha == 'PEDRA':
-            gif = 'image/jokenpo_gif/pedra_pedra.gif'
-            png = 'image/jokenpo_png/pedra_pedra_result.png'
+            gif = 'imagens/jokenpo/jokenpo_gif/pedra_pedra.gif'
+            png = 'imagens/jokenpo/jokenpo_png/pedra_pedra_result.png'
             result = 'Empate'
         elif pcescolha == 'PAPEL' and p1escolha == 'PAPEL':
-            gif = 'image/jokenpo_gif/papel_papel.gif'
-            png = 'image/jokenpo_png/papel_papel_result.png'
+            gif = 'imagens/jokenpo/jokenpo_gif/papel_papel.gif'
+            png = 'imagens/jokenpo/jokenpo_png/papel_papel_result.png'
             result = 'Empate'
         elif pcescolha == 'TESOURA' and p1escolha == 'TESOURA':
-            gif = 'image/jokenpo_gif/tesoura_tesoura.gif'
-            png = 'image/jokenpo_png/tesoura_tesoura_result.png'
+            gif = 'imagens/jokenpo/jokenpo_gif/tesoura_tesoura.gif'
+            png = 'imagens/jokenpo/jokenpo_png/tesoura_tesoura_result.png'
             result = 'Empate'
         
         elif pcescolha == 'PEDRA' and p1escolha == 'TESOURA':
-            gif = 'image/jokenpo_gif/pedra_tesoura.gif'
-            png = 'image/jokenpo_png/pedra_tesoura_result.png'
+            gif = 'imagens/jokenpo/jokenpo_gif/pedra_tesoura.gif'
+            png = 'imagens/jokenpo/jokenpo_png/pedra_tesoura_result.png'
             result = 'Venceu'
         elif pcescolha == 'PAPEL' and p1escolha == 'PEDRA':
-            gif = 'image/jokenpo_gif/papel_pedra.gif'
-            png = 'image/jokenpo_png/papel_pedra_result.png'
+            gif = 'imagens/jokenpo/jokenpo_gif/papel_pedra.gif'
+            png = 'imagens/jokenpo/jokenpo_png/papel_pedra_result.png'
             result = 'Venceu'
         elif pcescolha == 'TESOURA' and p1escolha == 'PAPEL':
-            gif = 'image/jokenpo_gif/tesoura_papel.gif'
-            png = 'image/jokenpo_png/tesoura_papel_result.png'
+            gif = 'imagens/jokenpo/jokenpo_gif/tesoura_papel.gif'
+            png = 'imagens/jokenpo/jokenpo_png/tesoura_papel_result.png'
             result = 'Venceu'
 
         elif pcescolha == 'PEDRA' and p1escolha == 'PAPEL':
-            gif = 'image/jokenpo_gif/pedra_papel.gif'
-            png = 'image/jokenpo_png/pedra_papel_result.png'
+            gif = 'imagens/jokenpo/jokenpo_gif/pedra_papel.gif'
+            png = 'imagens/jokenpo/jokenpo_png/pedra_papel_result.png'
             result = 'Perdeu'
         elif pcescolha == 'PAPEL' and p1escolha == 'TESOURA':
-            gif = 'image/jokenpo_gif/papel_tesoura.gif'
-            png = 'image/jokenpo_png/papel_tesoura_result.png'
+            gif = 'imagens/jokenpo/jokenpo_gif/papel_tesoura.gif'
+            png = 'imagens/jokenpo/jokenpo_png/papel_tesoura_result.png'
             result = 'Perdeu'
         elif pcescolha == 'TESOURA' and p1escolha == 'PEDRA':
-            gif = 'image/jokenpo_gif/tesoura_pedra.gif'
-            png = 'image/jokenpo_png/tesoura_pedra_result.png'
+            gif = 'imagens/jokenpo/jokenpo_gif/tesoura_pedra.gif'
+            png = 'imagens/jokenpo/jokenpo_png/tesoura_pedra_result.png'
             result = 'Perdeu'
 
         if window == janela01 and eventos in ('PEDRA', 'PAPEL', 'TESOURA'):

@@ -18,7 +18,7 @@ def recorde():
         resizable=False,
         return_keyboard_events=True,
         finalize=True,
-        icon= 'image/icons/icon_main.png',
+        icon= 'image/icon_main.png',
         background_color = '#272828')
 
     # -------------------------------------------------------------------------
