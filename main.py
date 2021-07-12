@@ -3,6 +3,7 @@ from PySimpleGUI import PySimpleGUI as sg
 from jokenpo import jokenpo
 from dado import dado
 from parouimpar import parouimpar
+from recorde import recorde
 
 # -------------------------------------------------------------------------
 # Janela inicial
@@ -60,6 +61,8 @@ while True:
         break
     if window == janela01 and event == 'Gravar':
         window['gravado'].update(' ☑', text_color='green', font=("Helvetica", 22))
+        recorde(window['nome'])
+        print(window['nome'])
     if window == janela01 and event == 'JOKENPO':
         janela01.hide()
         janela02 = jokenpo()

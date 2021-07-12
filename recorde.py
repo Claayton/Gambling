@@ -1,41 +1,57 @@
-def recorde():
-    from PySimpleGUI import PySimpleGUI as sg
+def bancodedadosonline(nome):
+    try:
+        a = open(nome, 'rt')
+        a.close()
+    except FileNotFoundError:
+        return False
+    else:
+        return True
 
-    WIN_W = 80
-    WIN_H = 25
 
-    def janela_recorde():
-        sg.theme('DarkBlue14')
-        layout = [
-                [sg.Text(size=(WIN_W,1), background_color = '#272828')],
-                [sg.Text('Digite aqui seu nome: ', size=(18, 1), font=("Helvetica", 20), background_color = '#272828', text_color='white', key='nome')
-                ,sg.Input(size=(20, 1), font=("Helvetica", 20), background_color = '#2f3030', text_color='white')],
-                [sg.Button('Entrar', size=(80, 3), key='Enter')]
-            ]
+def criararquivo(nome):
+    try:
+        a = open(nome, 'wt+')
+        a.close()
+    except:
+        print('Houve um erro na criação do arquivo!')
+    else:
+        print(f'Arquivo {nome} criado com sucesso!')
 
-        return sg.Window('Nome',
-        layout=layout,
-        resizable=False,
-        return_keyboard_events=True,
-        finalize=True,
-        icon= 'image/icon_main.png',
-        background_color = '#272828')
 
-    # -------------------------------------------------------------------------
-    # Criar as janelas iniciais
+def lerarquivo(nome):
+    from time import sleep
+    try:
+        a = open(nome, 'rt')
+    except:
+        print('Erro ao ler arquivo!')
+    else:
+        print('Pessoas Cadastradas')
+        sleep(1)
+        for linha in a:
+            dado = linha.split(';')
+            dado[1] = dado[1].replace('\n', '')
+            print(f'{dado[0]:_<30}{dado[1]:_>5} anos')
+    finally:
+        a.close()
 
-    janela01 = janela_recorde()
 
-    # -------------------------------------------------------------------------
-    # Criar loop para leitura de eventos 
+def cadastrar(arquivo, nome='defaut', pontuação=0):
+    try:
+        a = open(arquivo, 'at')
+    except:
+        print('Houve um erro na abertura do arquivo!')
+    else:
+        try:
+            a.write(f'{nome};{pontuação}\n')
+        except:
+            print('Houve um erro na hora de escrever os dados!')
+        else:
+            print(f'Novo recorde de {nome}!')
+            a.close()
 
-    while True:
-        window, event, valores = sg.read_all_windows(timeout=1)
-        if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
-            break
-        if window == janela01 and event == 'Enter':
-            janela01.hide()
-            nome = str(valores[0]).capitalize()
-            print(nome)
-            break
-    window.close()
+
+def recorde(jogador):
+    recorde = 'recorde.txt'
+    if not bancodedadosonline(recorde):
+        criararquivo('recorde.txt')
+        cadastrar(jogador)
