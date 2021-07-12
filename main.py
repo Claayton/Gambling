@@ -1,9 +1,10 @@
+from typing import KeysView
 import buttons
 from PySimpleGUI import PySimpleGUI as sg
 from jokenpo import jokenpo
 from dado import dado
 from parouimpar import parouimpar
-from recorde import recorde
+from recordes import dados_jogador, grava_recorde
 
 # -------------------------------------------------------------------------
 # Janela inicial
@@ -59,10 +60,12 @@ while True:
     window, event, valores = sg.read_all_windows(timeout=1)
     if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
         break
-    if window == janela01 and event == 'Gravar':
+    if window == janela01 and event in ('Gravar'):
         window['gravado'].update(' ☑', text_color='green', font=("Helvetica", 22))
-        recorde(window['nome'])
-        print(window['nome'])
+        nome_do_jogador = str(valores[0]).capitalize()
+        if nome_do_jogador == '':
+            nome_do_jogador = 'Default'
+        grava_recorde(player=nome_do_jogador)
     if window == janela01 and event == 'JOKENPO':
         janela01.hide()
         janela02 = jokenpo()

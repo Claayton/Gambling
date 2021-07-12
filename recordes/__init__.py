@@ -18,7 +18,7 @@ def criararquivo(nome):
         print(f'Arquivo {nome} criado com sucesso!')
 
 
-def lerarquivo(nome):
+"""def lerarquivo(nome):
     from time import sleep
     try:
         a = open(nome, 'rt')
@@ -32,17 +32,17 @@ def lerarquivo(nome):
             dado[1] = dado[1].replace('\n', '')
             print(f'{dado[0]:_<30}{dado[1]:_>5} anos')
     finally:
-        a.close()
+        a.close()"""
 
 
-def cadastrar(arquivo, nome='defaut', pontuação=0):
+def cadastrar(arquivo, nome):
     try:
         a = open(arquivo, 'at')
     except:
         print('Houve um erro na abertura do arquivo!')
     else:
         try:
-            a.write(f'{nome};{pontuação}\n')
+            a.write(f'{nome[0]};{nome[1]}\n')
         except:
             print('Houve um erro na hora de escrever os dados!')
         else:
@@ -50,8 +50,14 @@ def cadastrar(arquivo, nome='defaut', pontuação=0):
             a.close()
 
 
-def recorde(jogador):
-    recorde = 'recorde.txt'
-    if not bancodedadosonline(recorde):
-        criararquivo('recorde.txt')
-        cadastrar(jogador)
+def dados_jogador(jogador, pontuação=['Jokenpô', 'ParouÍmpar', 'Dado']):
+    NovoRecorde = [jogador, pontuação]
+    return NovoRecorde
+
+
+def grava_recorde(player):
+    arquivo = 'recordes/recorde.txt'
+    if not bancodedadosonline(arquivo):
+        criararquivo('recordes/recorde.txt')
+    cadastrar('recordes/recorde.txt', dados_jogador(jogador=player))
+    
