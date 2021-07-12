@@ -1,10 +1,9 @@
-from typing import KeysView
 import buttons
 from PySimpleGUI import PySimpleGUI as sg
-from jokenpo import jokenpo
-from dado import dado
-from parouimpar import parouimpar
-from recordes import dados_jogador, grava_recorde
+from games.jokenpo import jokenpo
+from games.dado import dado
+from games.parouimpar import parouimpar
+from recordes import grava_recorde
 
 # -------------------------------------------------------------------------
 # Janela inicial
