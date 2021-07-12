@@ -19,10 +19,10 @@ def janela_inicio():
     layout = [
         [sg.Text('Digite aqui seu nome:', size=(18, 1), font=("Helvetica", 15), background_color = bgcolor, text_color='white', key='nome'),
         sg.Input(size=(17, 1), font=("Helvetica", 20), background_color = '#2f3030', text_color='white'),
-        sg.Text(' ☒', size=(2, 1), font=("Helvetica", 22), background_color = bgcolor, text_color='red', key='gravado'),
+        sg.Text('☒', size=(2, 1), font=("Helvetica", 25), background_color = bgcolor, text_color='red', key='gravado'),
         sg.Button('Gravar', size=(16, 1), key='Gravar')],       
         [sg.Canvas(background_color=ccolor, size=(650, 10), pad=None)],
-        [sg.Text('   TESTE SUA SORTE', size=(26, 1), font=('Dyuthi', 50), background_color = bgcolor, text_color='white')],    
+        [sg.Text('TESTE SUA SORTE', size=(26, 1), font=('Dyuthi', 50), background_color = bgcolor, text_color='white', justification='c')],    
         [sg.Canvas(background_color=ccolor, size=(650, 10), pad=None)],
         [sg.Text('       JOKENPÔ           PAR OU ÍMPAR            DADO          ', size=(50, 1), font=('Dyuthi', 20), background_color = bgcolor, text_color='white')],
         [sg.Canvas(background_color=ccolor, size=(650, 10), pad=None)],    
@@ -60,7 +60,7 @@ while True:
     if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
         break
     if window == janela01 and event in ('Gravar'):
-        window['gravado'].update(' ☑', text_color='green', font=("Helvetica", 22))
+        window['gravado'].update('☑', text_color='green')
         nome_do_jogador = str(valores[0]).capitalize()
         if nome_do_jogador == '':
             nome_do_jogador = 'Default'
