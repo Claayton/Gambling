@@ -1,8 +1,8 @@
 def jokenpo():
     from PySimpleGUI import PySimpleGUI as sg
     from random import choice
-    from time import sleep
     import buttons
+    from recordes import nome_do_ultimo_player
 
     p1escolha = ''
     pcescolha = ''
@@ -11,21 +11,35 @@ def jokenpo():
 
     # layout
     def jokenpo_inicio():
+        WIN_W = 650
+        WIN_H = 450
+        bg_color = '#4f4f4f'
+        
         sg.theme('DarkBlue14')
         layout = [
-            [sg.Text(f'', size=(10,3), background_color = '#4F4F4F'),
-            sg.Text(f'\nFAÇA A SUA ESCOLHA', size=(35,3), background_color = '#4F4F4F')],
-            [sg.Button('', image_data=buttons.button_pedra64, key='PEDRA', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
+            [sg.Canvas(background_color=bg_color, size=(650, 20), pad=None)], 
+            [sg.Canvas(background_color='#272828', size=(650, 10), pad=None)], 
+            [sg.Canvas(background_color=bg_color, size=(650, 10), pad=None)],
+            [sg.Text(f'{f"Olá {nome_do_ultimo_player()}":^90}', font=('Dyuthi', 35), background_color = bg_color, justification='c')],
+            [sg.Text(f'{"FAÇA A SUA ESCOLHA":^100}', font=('Dyuthi', 35), background_color = bg_color, justification='c')],
+            [sg.Canvas(background_color=bg_color, size=(650, 10), pad=None)], 
+            [sg.Canvas(background_color='#272828', size=(650, 10), pad=None)], 
+            [sg.Canvas(background_color=bg_color, size=(60, 150), pad=None),
+            sg.Button('', image_data=buttons.button_pedra64, key='PEDRA', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
+            sg.Canvas(background_color=bg_color, size=(61, 150), pad=None),
             sg.Button('', image_data=buttons.button_papel64, key='PAPEL', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
-            sg.Button('', image_data=buttons.button_tesoura64, key='TESOURA', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5)]
+            sg.Canvas(background_color=bg_color, size=(61, 150), pad=None),
+            sg.Button('', image_data=buttons.button_tesoura64, key='TESOURA', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
+            sg.Canvas(background_color=bg_color, size=(60, 150), pad=None)]
         ]
 
         # janela
         return sg.Window('JOKENPÔ',
         layout, background_color = '#4F4F4F',
         icon= 'imagens/jokenpo/icon_jokenpo.png',
-        size=(360, 200),
+        size=(WIN_W, WIN_H),
         finalize=True)
+
 
     def jogar():
         while True:
@@ -38,7 +52,7 @@ def jokenpo():
             break
         return sg.popup_animated(None)
 
-    def resultado():
+    def mostrar_resultado():
         WIN_W = 80
         WIN_H = 25
 
@@ -116,7 +130,7 @@ def jokenpo():
 
         if window == janela01 and eventos in ('PEDRA', 'PAPEL', 'TESOURA'):
             janela01.Hide()
-            janela02 = resultado()
+            janela02 = mostrar_resultado()
             janela02.Hide()
             jogar()
             janela02.UnHide()
@@ -126,5 +140,3 @@ def jokenpo():
         if window == janela02 and eventos in (sg.WIN_CLOSED, 'Cancel'):
             break
     window.Close()
-
-    
