@@ -1,10 +1,9 @@
-from typing import KeysView
 import buttons
 from PySimpleGUI import PySimpleGUI as sg
-from jokenpo import jokenpo
-from dado import dado
-from parouimpar import parouimpar
-from recordes import dados_jogador, grava_recorde
+from games.jokenpo import jokenpo
+from games.dado import dado
+from games.parouimpar import parouimpar
+from recordes import grava_recorde
 
 # -------------------------------------------------------------------------
 # Janela inicial
@@ -19,7 +18,7 @@ def janela_inicio():
     sg.theme('DarkBlue14')
     layout = [
         [sg.Text('Digite aqui seu nome:', size=(18, 1), font=("Helvetica", 15), background_color = bgcolor, text_color='white', key='nome'),
-        sg.Input(size=(17, 1), font=("Helvetica", 20), background_color = '#2f3030', text_color='white'),
+        sg.Input(size=(17, 1), font=("Helvetica", 20), background_color = '#2f3030', text_color='white', do_not_clear=False, key='input'),
         sg.Text('☒', size=(2, 1), font=("Helvetica", 25), background_color = bgcolor, text_color='red', key='gravado'),
         sg.Button('Gravar', size=(16, 1), key='Gravar')],       
         [sg.Canvas(background_color=ccolor, size=(650, 10), pad=None)],
@@ -54,6 +53,7 @@ def janela_inicio():
 janela01, janela02, janela03, janela04 = janela_inicio(), None, None, None
 
 # -------------------------------------------------------------------------
+
 # Criar loop para leitura de eventos 
 
 while True:
@@ -62,20 +62,24 @@ while True:
         break
     if window == janela01 and event in ('Gravar'):
         window['gravado'].update('☑', text_color='green')
-        nome_do_jogador = str(valores[0]).capitalize()
+        nome_do_jogador = str(valores['input']).capitalize()
         if nome_do_jogador == '':
             nome_do_jogador = 'Default'
         grava_recorde(player=nome_do_jogador)
+        window['input'].update('')
     if window == janela01 and event == 'JOKENPO':
-        janela01.hide()
+        window['gravado'].update('☒', text_color='red')
+        janela01.Hide()
         janela02 = jokenpo()
         janela01.UnHide()
     if window == janela01 and  event == 'PAROUIMPAR':
-        janela01.hide()
+        window['gravado'].update('☒', text_color='red')
+        janela01.Hide()
         janela03 = parouimpar()
         janela01.UnHide()
     if window == janela01 and event == 'DADO':
-        janela01.hide()
+        window['gravado'].update('☒', text_color='red')
+        janela01.Hide()
         janela04 = dado()
         janela01.UnHide()
 window.close()

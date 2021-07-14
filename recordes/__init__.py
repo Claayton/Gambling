@@ -1,4 +1,4 @@
-def bancodedadosonline(nome):
+def arquivoexiste(nome):
     try:
         a = open(nome, 'rt')
         a.close()
@@ -16,6 +16,17 @@ def criararquivo(nome):
         print('Houve um erro na criação do arquivo!')
     else:
         print(f'Arquivo {nome} criado com sucesso!')
+
+
+def nome_do_ultimo_player():
+    try:
+        with open ("recordes/recorde.txt", "rt") as nomes:
+                for c in nomes:
+                    nome = c[0:c.find(';')]
+        return nome            
+    except:
+        return ''
+    
 
 
 """def lerarquivo(nome):
@@ -50,14 +61,14 @@ def cadastrar(arquivo, nome):
             a.close()
 
 
-def dados_jogador(jogador, pontuação=['Jokenpô', 'ParouÍmpar', 'Dado']):
+def dados_do_jogador(jogador, pontuação=['Jokenpô', 'ParouÍmpar', 'Dado']):
     NovoRecorde = [jogador, pontuação]
     return NovoRecorde
 
 
 def grava_recorde(player):
     arquivo = 'recordes/recorde.txt'
-    if not bancodedadosonline(arquivo):
+    if not arquivoexiste(arquivo):
         criararquivo('recordes/recorde.txt')
-    cadastrar('recordes/recorde.txt', dados_jogador(jogador=player))
+    cadastrar('recordes/recorde.txt', dados_do_jogador(jogador=player))
     
