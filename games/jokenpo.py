@@ -10,11 +10,10 @@ def jokenpo():
     possibilidades = ['PEDRA', 'PAPEL', 'TESOURA']
     WIN_W = 650
     WIN_H = 450
+    bg_color = '#4f4f4f'
 
     # layout
     def jokenpo_inicio():
-        
-        bg_color = '#4f4f4f'
         
         if ler_nome_do_ultimo_player() != 'Default':
             nome = ler_nome_do_ultimo_player()
@@ -70,8 +69,9 @@ def jokenpo():
         sg.theme('DarkBlue14')
         layout = [
             [sg.Image(png, background_color = '#4F4F4F')],
-            [sg.Button(f'{"Cancel":^}', key='Cancel', size=(35,3)),
-            sg.Button(f'{"JOGAR NOVAMENTE":^}', key='JOGAR', size=(35,3))]
+            [sg.Canvas(background_color=bg_color, size=(650, 20), pad=None)], 
+            [sg.Button(f'{"Cancel":^}', key='Cancel', size=(41,5)),
+            sg.Button(f'{"JOGAR NOVAMENTE":^}', key='JOGAR', size=(41,5))]
             ]
 
         return sg.Window('Jokenpo',
