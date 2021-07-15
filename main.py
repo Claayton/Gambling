@@ -18,11 +18,11 @@ def janela_inicio():
     sg.theme('DarkBlue14')
     layout = [
         [sg.Text('Digite aqui seu nome:', size=(18, 1), font=("Helvetica", 15), background_color = bgcolor, text_color='white', key='nome'),
-        sg.Input(size=(17, 1), font=("Helvetica", 20), background_color = '#2f3030', text_color='white', do_not_clear=False, key='input'),
-        sg.Text('☒', size=(2, 1), font=("Helvetica", 25), background_color = bgcolor, text_color='red', key='gravado'),
-       sg.Button('Salvar', size=(16, 1), key='Salvar')],       
+        sg.Input(size=(19, 1), font=("Helvetica", 20), background_color = '#2f3030', text_color='white', do_not_clear=False, key='input'),
+        sg.Button('Salvar', size=(18, 1), key='Salvar')],   
+        [sg.Text('☒', size=(WIN_W, 1), font=("Helvetica", 8), background_color = bgcolor, text_color='red', key='gravado',justification='right')],    
         [sg.Canvas(background_color=ccolor, size=(650, 10), pad=None)],
-        [sg.Text('TESTE SUA SORTE', size=(26, 1), font=('Dyuthi', 50), background_color = bgcolor, text_color='white', justification='c')],    
+        [sg.Text('TESTE SUA SORTE', size=(26, 1), font=('Dyuthi', 50), background_color = bgcolor, text_color='white', justification='center')],    
         [sg.Canvas(background_color=ccolor, size=(650, 10), pad=None)],
         [sg.Text('       JOKENPÔ           PAR OU ÍMPAR            DADO          ', size=(50, 1), font=('Dyuthi', 20), background_color = bgcolor, text_color='white')],
         [sg.Canvas(background_color=ccolor, size=(650, 10), pad=None)],    
@@ -62,31 +62,27 @@ while True:
         gravar_nome_do_ultimo_player(nome='')
         break
     if window == janela01 and event in ('Salvar'):
-        window['gravado'].update('☑', text_color='green')
         nome_do_jogador = str(valores['input']).capitalize()
         gravar_nome_do_ultimo_player(nome=nome_do_jogador)
-        window['input'].update('')
+        window['gravado'].update(f'Boa Sorte {nome_do_jogador}!', text_color='green')
     if window == janela01 and event == 'JOKENPO':
+        window['gravado'].update(f'Boa Sorte {nome_do_jogador}!', text_color='green')
         nome_do_jogador = str(valores['input']).capitalize()
         gravar_nome_do_ultimo_player(nome=nome_do_jogador)
-        window['input'].update('')
-        window['gravado'].update('☒', text_color='red')
         janela01.Hide()
         janela02 = jokenpo()
         janela01.UnHide()
     if window == janela01 and  event == 'PAROUIMPAR':
+        window['gravado'].update(f'Boa Sorte {nome_do_jogador}!', text_color='green')
         nome_do_jogador = str(valores['input']).capitalize()
         gravar_nome_do_ultimo_player(nome=nome_do_jogador)
-        window['input'].update('')
-        window['gravado'].update('☒', text_color='red')
         janela01.Hide()
         janela03 = parouimpar()
         janela01.UnHide()
     if window == janela01 and event == 'DADO':
+        window['gravado'].update(f'Boa Sorte {nome_do_jogador}!', text_color='green')
         nome_do_jogador = str(valores['input']).capitalize()
         gravar_nome_do_ultimo_player(nome=nome_do_jogador)
-        window['input'].update('')
-        window['gravado'].update('☒', text_color='red')
         janela01.Hide()
         janela04 = dado()
         janela01.UnHide()
