@@ -3,7 +3,7 @@ from PySimpleGUI import PySimpleGUI as sg
 from games.jokenpo import jokenpo
 from games.dado import dado
 from games.parouimpar import parouimpar
-from recordes import grava_recorde
+from recordes import gravar_nome_do_ultimo_player
 
 # -------------------------------------------------------------------------
 # Janela inicial
@@ -20,7 +20,7 @@ def janela_inicio():
         [sg.Text('Digite aqui seu nome:', size=(18, 1), font=("Helvetica", 15), background_color = bgcolor, text_color='white', key='nome'),
         sg.Input(size=(17, 1), font=("Helvetica", 20), background_color = '#2f3030', text_color='white', do_not_clear=False, key='input'),
         sg.Text('☒', size=(2, 1), font=("Helvetica", 25), background_color = bgcolor, text_color='red', key='gravado'),
-        sg.Button('Gravar', size=(16, 1), key='Gravar')],       
+       sg.Button('Salvar', size=(16, 1), key='Salvar')],       
         [sg.Canvas(background_color=ccolor, size=(650, 10), pad=None)],
         [sg.Text('TESTE SUA SORTE', size=(26, 1), font=('Dyuthi', 50), background_color = bgcolor, text_color='white', justification='c')],    
         [sg.Canvas(background_color=ccolor, size=(650, 10), pad=None)],
@@ -34,7 +34,7 @@ def janela_inicio():
         sg.Button('', image_data=buttons.button_dado64, key='DADO', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
         sg.Canvas(background_color=bgcolor, size=(20, 150), pad=None)],
         [sg.Canvas(background_color=ccolor, size=(650, 10), pad=None)]
-        ]
+        ] 
 
     return sg.Window('Gambling',
     size=(WIN_W, WIN_H),
@@ -59,25 +59,33 @@ janela01, janela02, janela03, janela04 = janela_inicio(), None, None, None
 while True:
     window, event, valores = sg.read_all_windows(timeout=1)
     if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
+        gravar_nome_do_ultimo_player(nome='')
         break
-    if window == janela01 and event in ('Gravar'):
+    if window == janela01 and event in ('Salvar'):
         window['gravado'].update('☑', text_color='green')
         nome_do_jogador = str(valores['input']).capitalize()
-        if nome_do_jogador == '':
-            nome_do_jogador = 'Default'
-        grava_recorde(player=nome_do_jogador)
+        gravar_nome_do_ultimo_player(nome=nome_do_jogador)
         window['input'].update('')
     if window == janela01 and event == 'JOKENPO':
+        nome_do_jogador = str(valores['input']).capitalize()
+        gravar_nome_do_ultimo_player(nome=nome_do_jogador)
+        window['input'].update('')
         window['gravado'].update('☒', text_color='red')
         janela01.Hide()
         janela02 = jokenpo()
         janela01.UnHide()
     if window == janela01 and  event == 'PAROUIMPAR':
+        nome_do_jogador = str(valores['input']).capitalize()
+        gravar_nome_do_ultimo_player(nome=nome_do_jogador)
+        window['input'].update('')
         window['gravado'].update('☒', text_color='red')
         janela01.Hide()
         janela03 = parouimpar()
         janela01.UnHide()
     if window == janela01 and event == 'DADO':
+        nome_do_jogador = str(valores['input']).capitalize()
+        gravar_nome_do_ultimo_player(nome=nome_do_jogador)
+        window['input'].update('')
         window['gravado'].update('☒', text_color='red')
         janela01.Hide()
         janela04 = dado()

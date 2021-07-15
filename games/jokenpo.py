@@ -2,7 +2,7 @@ def jokenpo():
     from PySimpleGUI import PySimpleGUI as sg
     from random import choice
     import buttons
-    from recordes import nome_do_ultimo_player
+    from recordes import ler_nome_do_ultimo_player
 
     p1escolha = ''
     pcescolha = ''
@@ -15,12 +15,17 @@ def jokenpo():
         WIN_H = 450
         bg_color = '#4f4f4f'
         
+        if ler_nome_do_ultimo_player() != 'Default':
+            nome = ler_nome_do_ultimo_player()
+        else:
+            nome = ''
+        
         sg.theme('DarkBlue14')
         layout = [
             [sg.Canvas(background_color=bg_color, size=(650, 20), pad=None)], 
             [sg.Canvas(background_color='#272828', size=(650, 10), pad=None)], 
             [sg.Canvas(background_color=bg_color, size=(650, 10), pad=None)],
-            [sg.Text(f'{f"Olá {nome_do_ultimo_player()}":^90}', font=('Dyuthi', 35), background_color = bg_color, justification='c')],
+            [sg.Text(f'{f"Olá {nome}":^90}', font=('Dyuthi', 35), background_color = bg_color, justification='c')],
             [sg.Text(f'{"FAÇA A SUA ESCOLHA":^100}', font=('Dyuthi', 35), background_color = bg_color, justification='c')],
             [sg.Canvas(background_color=bg_color, size=(650, 10), pad=None)], 
             [sg.Canvas(background_color='#272828', size=(650, 10), pad=None)], 

@@ -18,15 +18,26 @@ def criararquivo(nome):
         print(f'Arquivo {nome} criado com sucesso!')
 
 
-def nome_do_ultimo_player():
+def gravar_nome_do_ultimo_player(nome):
+    arquivo = 'recordes/nome_atual.txt'
+    if not arquivoexiste(arquivo):
+        criararquivo('recordes/nome_atual.txt')
     try:
-        with open ("recordes/recorde.txt", "rt") as nomes:
-                for c in nomes:
-                    nome = c[0:c.find(';')]
+        with open (arquivo, 'w') as nomes:
+            nomes.write(nome)
+    except:
+        print('Houve um erro no salvamento do nome do jogador')
+    
+
+def ler_nome_do_ultimo_player():
+    arquivo = 'recordes/nome_atual.txt'
+    try:
+        with open (arquivo, "rt") as nomes:
+            for c in nomes:
+                nome = c
         return nome            
     except:
         return ''
-    
 
 
 """def lerarquivo(nome):
@@ -46,29 +57,27 @@ def nome_do_ultimo_player():
         a.close()"""
 
 
-def cadastrar(arquivo, nome):
+def dados_do_jogador(nome=ler_nome_do_ultimo_player(), pontuação=['Jokenpô', 'ParouÍmpar', 'Dado']):
+    jogador = nome
+    if jogador == '':
+        jogador = 'Default'
+    NovoRecorde = [jogador, pontuação]
+    return NovoRecorde
+
+
+def cadastrar_recorde(arquivo, jogador=dados_do_jogador()):
+    arquivo = 'recordes/recorde.txt'
+    if not arquivoexiste(arquivo):
+        criararquivo('recordes/recorde.txt')
     try:
         a = open(arquivo, 'at')
     except:
         print('Houve um erro na abertura do arquivo!')
     else:
         try:
-            a.write(f'{nome[0]};{nome[1]}\n')
+            a.write(f'{jogador[0]};{jogador[1]}\n')
         except:
             print('Houve um erro na hora de escrever os dados!')
         else:
-            print(f'Novo recorde de {nome}!')
+            print(f'Novo recorde de {jogador} cadastrado!')
             a.close()
-
-
-def dados_do_jogador(jogador, pontuação=['Jokenpô', 'ParouÍmpar', 'Dado']):
-    NovoRecorde = [jogador, pontuação]
-    return NovoRecorde
-
-
-def grava_recorde(player):
-    arquivo = 'recordes/recorde.txt'
-    if not arquivoexiste(arquivo):
-        criararquivo('recordes/recorde.txt')
-    cadastrar('recordes/recorde.txt', dados_do_jogador(jogador=player))
-    
