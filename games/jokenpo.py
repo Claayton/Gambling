@@ -8,11 +8,12 @@ def jokenpo():
     pcescolha = ''
     result = ''
     possibilidades = ['PEDRA', 'PAPEL', 'TESOURA']
+    WIN_W = 650
+    WIN_H = 450
 
     # layout
     def jokenpo_inicio():
-        WIN_W = 650
-        WIN_H = 450
+        
         bg_color = '#4f4f4f'
         
         if ler_nome_do_ultimo_player() != 'Default':
@@ -35,12 +36,18 @@ def jokenpo():
             sg.Button('', image_data=buttons.button_papel64, key='PAPEL', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
             sg.Canvas(background_color=bg_color, size=(61, 150), pad=None),
             sg.Button('', image_data=buttons.button_tesoura64, key='TESOURA', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
-            sg.Canvas(background_color=bg_color, size=(60, 150), pad=None)]
+            sg.Canvas(background_color=bg_color, size=(60, 150), pad=None)],
+            [sg.Canvas(background_color='#272828', size=(650, 10), pad=None)],
+            [sg.Canvas(background_color=bg_color, size=(650, 10), pad=None)],
+            [sg.Text(f'Placar PC: {2}', size= (24, 1),font=('Dyuthi', 16), background_color = bg_color, justification='left'),
+            sg.Text(f'Placar do Player: {2}', size= (24, 1), font=('Dyuthi', 16), background_color = bg_color, justification='left')]
         ]
 
         # janela
         return sg.Window('JOKENPÔ',
-        layout, background_color = '#4F4F4F',
+        location=(350, 150),
+        layout=layout,
+        background_color = '#4F4F4F',
         icon= 'imagens/jokenpo/icon_jokenpo.png',
         size=(WIN_W, WIN_H),
         finalize=True)
@@ -51,23 +58,25 @@ def jokenpo():
             for i in range(20000):
                 sg.popup_animated(
                     gif,
+                    location=(350, 190),
                     no_titlebar=True,
                     time_between_frames=100,
                     background_color = '#4F4F4F')
             break
         return sg.popup_animated(None)
 
-    def mostrar_resultado():
-        WIN_W = 80
-        WIN_H = 25
 
+    def mostrar_resultado():
         sg.theme('DarkBlue14')
         layout = [
-            [sg.Button(f'{"JOGAR NOVAMENTE":^}', key='JOGAR', size=(35,3))],
             [sg.Image(png, background_color = '#4F4F4F')],
-            [sg.Button(f'{"Cancel":^}', key='Cancel', size=(35,3))]]
+            [sg.Button(f'{"Cancel":^}', key='Cancel', size=(35,3)),
+            sg.Button(f'{"JOGAR NOVAMENTE":^}', key='JOGAR', size=(35,3))]
+            ]
 
         return sg.Window('Jokenpo',
+        location=(350, 190),
+        size=(WIN_W, WIN_H),
         layout=layout,
         resizable=True,
         return_keyboard_events=True,

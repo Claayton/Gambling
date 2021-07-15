@@ -37,6 +37,7 @@ def janela_inicio():
         ] 
 
     return sg.Window('Gambling',
+    location=(350, 150),
     size=(WIN_W, WIN_H),
     layout=layout,
     resizable=True,
