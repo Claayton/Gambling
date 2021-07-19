@@ -75,6 +75,7 @@ def jokenpo():
 
 
     def mostrar_resultado(nome='Player'):
+        jogar()
         if nome == 'Default' or nome == '':
             nome = 'Player'
 
@@ -91,7 +92,7 @@ def jokenpo():
             ]
 
         return sg.Window('Jokenpo',
-        location=(350, 190),
+        location=(350, 150),
         size=(WIN_W, WIN_H),
         layout=layout,
         resizable=True,
@@ -160,9 +161,6 @@ def jokenpo():
         if window == janela01 and eventos in ('PEDRA', 'PAPEL', 'TESOURA'):
             janela01.Hide()
             janela02 = mostrar_resultado(nome)
-            janela02.Hide()
-            jogar()
-            janela02.UnHide()
             if result == 'Perdeu':
                 placar_pc += 1
                 window['placar_pc'].update(f'Placar PC: {placar_pc}')
