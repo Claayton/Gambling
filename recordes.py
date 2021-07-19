@@ -15,15 +15,15 @@ def recordes():
             [sg.Text('RECORDES:', size=(18, 1), font=("Arial", 30), background_color = bgcolor, text_color='white', key='nome')],
             [sg.Canvas(background_color=bgcolor, size=(650, 30), pad=None)],
             [sg.Text('Medalha da Ouro:', size=(18, 1), font=("Arial", 15), background_color = bgcolor, text_color='#DAA520', key='ouro')],
-            [sg.Text(f'{dados_do_jogador()}', size=(100, 1), font=("Arial", 10), background_color = bgcolor, text_color='#DAA520', key='ouro')],
+            [sg.Text(f'{dados_do_jogador()}', size=(100, 1), font=("Arial", 10), background_color = bgcolor, text_color='#DAA520')],
             [sg.Canvas(background_color='black', size=(650, 2), pad=None)],
             [sg.Canvas(background_color=bgcolor, size=(650, 30), pad=None)],
             [sg.Text('Medalha de Prata:', size=(100, 1), font=("Arial", 15), background_color = bgcolor, text_color='#A9A9A9', key='prata')],
-            [sg.Text(f'{dados_do_jogador()}', size=(100, 1), font=("Arial", 10), background_color = bgcolor, text_color='#A9A9A9', key='ouro')],
+            [sg.Text(f'{dados_do_jogador()}', size=(100, 1), font=("Arial", 10), background_color = bgcolor, text_color='#A9A9A9')],
             [sg.Canvas(background_color='black', size=(650, 2), pad=None)],
             [sg.Canvas(background_color=bgcolor, size=(650, 30), pad=None)],
             [sg.Text('Medalha de bronze:', size=(100, 1), font=("Arial", 15), background_color = bgcolor, text_color='#CD7F32', key='bronze')],
-            [sg.Text(f'{dados_do_jogador()}', size=(100, 1), font=("Arial", 10), background_color = bgcolor, text_color='#CD7F32', key='ouro')],
+            [sg.Text(f'{dados_do_jogador()}', size=(100, 1), font=("Arial", 10), background_color = bgcolor, text_color='#CD7F32')],
             [sg.Canvas(background_color='black', size=(650, 2), pad=None)],
             ] 
 
