@@ -3,7 +3,8 @@ from PySimpleGUI import PySimpleGUI as sg
 from games.jokenpo import jokenpo
 from games.dado import dado
 from games.parouimpar import parouimpar
-from recordes import gravar_nome_do_ultimo_player, ler_nome_do_ultimo_player
+from recordes import recordes
+from funçoes import gravar_nome_do_ultimo_player, ler_nome_do_ultimo_player
 
 # -------------------------------------------------------------------------
 # Janela inicial
@@ -34,6 +35,7 @@ def janela_inicio():
         sg.Button('', image_data=buttons.button_dado64, key='DADO', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
         sg.Canvas(background_color=bgcolor, size=(20, 150), pad=None)],
         [sg.Canvas(background_color=ccolor, size=(650, 10), pad=None)],
+        [sg.Canvas(background_color=bgcolor, size=(455, 25), pad=None), sg.Button('recordes', size=(18, 1), key='recordes')],
         ] 
 
     return sg.Window('Gambling',
@@ -51,7 +53,7 @@ def janela_inicio():
 # -------------------------------------------------------------------------
 # Criar as janelas iniciais
 
-janela01, janela02, janela03, janela04 = janela_inicio(), None, None, None
+janela01, janela02, janela03, janela04, janela05 = janela_inicio(), None, None, None, None
 
 # -------------------------------------------------------------------------
 
@@ -86,5 +88,9 @@ while True:
         gravar_nome_do_ultimo_player(nome=nome_do_jogador)
         janela01.Hide()
         janela04 = dado()
+        janela01.UnHide()
+    if window == janela01 and event == 'recordes':
+        janela01.Hide()
+        janela05 = recordes()
         janela01.UnHide()
 window.close()
