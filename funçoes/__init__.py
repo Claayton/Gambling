@@ -20,9 +20,9 @@ def criararquivo(nome):
 
 
 def gravar_nome_do_ultimo_player(nome):
-    arquivo = 'funçoes/nome_atual.txt'
+    arquivo = 'dadoslocais/nome_atual.txt'
     if not arquivoexiste(arquivo):
-        criararquivo('recordes/nome_atual.txt')
+        criararquivo('dadoslocais/nome_atual.txt')
     try:
         with open (arquivo, 'w') as nomes:
             nomes.write(nome)
@@ -31,7 +31,7 @@ def gravar_nome_do_ultimo_player(nome):
     
 
 def ler_nome_do_ultimo_player():
-    arquivo = 'funçeos/nome_atual.txt'
+    arquivo = 'dadoslocais/nome_atual.txt'
     try:
         with open (arquivo, "rt") as nomes:
             for c in nomes:
@@ -66,10 +66,10 @@ def dados_do_jogador(nome=ler_nome_do_ultimo_player(), pontuação=['Jokenpô', 
     return NovoRecorde
 
 
-def cadastrar_recorde(arquivo = 'funçoes/recorde.txt', jogador=dados_do_jogador()):
-    arquivo = 'funçoes/recorde.txt'
+def cadastrar_recorde(arquivo = 'dadoslocais/recorde.txt', jogador=dados_do_jogador()):
+    arquivo = 'dadoslocais/recorde.txt'
     if not arquivoexiste(arquivo):
-        criararquivo('recordes/recorde.txt')
+        criararquivo('dadoslocais/recorde.txt')
     try:
         a = open(arquivo, 'at')
     except:

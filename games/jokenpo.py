@@ -1,8 +1,8 @@
 def jokenpo():
     from PySimpleGUI import PySimpleGUI as sg
     from random import choice
-    import buttons
-    from recordes import ler_nome_do_ultimo_player
+    from funçoes import buttons
+    from funçoes.recordes import ler_nome_do_ultimo_player
 
     p1escolha = ''
     pcescolha = ''

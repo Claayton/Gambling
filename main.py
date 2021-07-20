@@ -1,9 +1,9 @@
-import buttons
+from funçoes import buttons
 from PySimpleGUI import PySimpleGUI as sg
 from games.jokenpo import jokenpo
 from games.dado import dado
 from games.parouimpar import parouimpar
-from recordes import recordes
+from funçoes.recordes import recordes
 from funçoes import gravar_nome_do_ultimo_player, ler_nome_do_ultimo_player
 
 # -------------------------------------------------------------------------
