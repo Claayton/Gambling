@@ -1,4 +1,4 @@
 *.pyc
-dir__pycache__/
+**/__pycache__
 teste.py
-recorde.txt
+*.db
