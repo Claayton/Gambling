@@ -5,18 +5,18 @@ def inserir_nome(nome_db='Nome.db', nome_tabela='Nomes', nome=None):
     import sqlite3
     from contextlib import closing
 
-    with sqlite3.connect(nome_db) as conexão:
-        with closing(conexão.cursor()) as cursor:
+    with sqlite3.connect(nome_db) as conexao:
+        with closing(conexao.cursor()) as cursor:
             cursor.execute(f"""
                 CREATE TABLE IF NOT EXISTS {nome_tabela}(
                     id integer not null,
                     nome varchar(30) not null)
-                """);
+                """)
             cursor.execute(f"""
                 insert into {nome_tabela}(id, nome)
                     values(?, ?)
                 """, ('1', nome,))
-        conexão.commit()
+        conexao.commit()
 
 
 def atualizar_nome(nome_db='Nome.db', nome_tabela='Nomes', nome=None):
@@ -24,26 +24,26 @@ def atualizar_nome(nome_db='Nome.db', nome_tabela='Nomes', nome=None):
     import sqlite3
     from contextlib import closing
 
-    with sqlite3.connect(nome_db) as conexão:
-        with closing(conexão.cursor()) as cursor:
+    with sqlite3.connect(nome_db) as conexao:
+        with closing(conexao.cursor()) as cursor:
             cursor.execute(f"""
                 update {nome_tabela}
                     set nome='{nome}'
                     where id='1'""")
-        conexão.commit()
+        conexao.commit()
 
 
-def deleta_tabela_Nomes(nome_db='Nome.db', nome_tabela='Nomes', nome=None):
+def deleta_tabela_nomes(nome_db='Nome.db', nome_tabela='Nomes'):
     import sqlite3
     from contextlib import closing
     try:
-        with sqlite3.connect(nome_db) as conexão:
-            with closing(conexão.cursor()) as cursor:
+        with sqlite3.connect(nome_db) as conexao:
+            with closing(conexao.cursor()) as cursor:
                 cursor.execute(f"""
                     delete from {nome_tabela}
                         where nome=''""")
-            conexão.commit()
-    except:
+            conexao.commit()
+    except IndentationError:
         print(f'Não conseguo deletar o Nome com ID: {id}!')
 
 
@@ -51,8 +51,8 @@ def consulta_nome(nome_db='Nome.db', nome_tabela='Nomes'):
     import sqlite3
     from contextlib import closing
 
-    with sqlite3.connect(nome_db) as conexão:
-        with closing(conexão.cursor()) as cursor:
+    with sqlite3.connect(nome_db) as conexao:
+        with closing(conexao.cursor()) as cursor:
             cursor.execute(f"select * from {nome_tabela} order by id")
             resultado = cursor.fetchall()
     return resultado[0][1]
@@ -71,14 +71,12 @@ def arquivo_existe(nome_db='Dados.db'):
         return False
 
 
-def inserir_recordes(nome_db='Dados.db',
-                nome_tabela='Recordes_jokenpo'):
-
+def inserir_recordes(nome_db='Dados.db', nome_tabela='Recordes_jokenpo'):
     import sqlite3
     from contextlib import closing
 
-    with sqlite3.connect(nome_db) as conexão:
-        with closing(conexão.cursor()) as cursor:
+    with sqlite3.connect(nome_db) as conexao:
+        with closing(conexao.cursor()) as cursor:
             cursor.execute(f"""
                 CREATE TABLE IF NOT EXISTS {nome_tabela}(
                 id integer primary key autoincrement not null,
@@ -91,52 +89,57 @@ def inserir_recordes(nome_db='Dados.db',
             for c in range(0, 3):
                 cursor.execute(f"""
                     insert into {nome_tabela}(nome, vitorias, empates, derrotas, total, media)
-                    values(?, ?, ?, ?, ?, ?)""", 
-                    ('Default', '0', '0', '0', '0', '0'))
-        conexão.commit()
+                    values(?, ?, ?, ?, ?, ?)""",
+                               ('Default', '0', '0', '0', '0', '0'))
+        conexao.commit()
 
 
 def atualizar_recordes(nome_db='Dados.db',
-                nome_tabela='Recordes_jokenpo',
-                nome=None,
-                vitorias=None,
-                empates=None,
-                derrotas=None,
-                total=None, 
-                media=None,
-                classificação='ouro'):
-    if classificação == 'ouro':
-        classificação = 1
-    elif classificação == 'prata':
-        classificação = 2
+                       nome_tabela='Recordes_jokenpo',
+                       nome=None,
+                       vitorias=None,
+                       empates=None,
+                       derrotas=None,
+                       total=None,
+                       media=None,
+                       classificacao='ouro'):
+    if classificacao == 'ouro':
+        classificacao = 1
+    elif classificacao == 'prata':
+        classificacao = 2
     else:
-        classificação = 3
-    if nome == None or nome == '':
+        classificacao = 3
+    if nome == '' or nome is None:
         nome = 'Default'
 
     import sqlite3
     from contextlib import closing
 
-    with sqlite3.connect(nome_db) as conexão:
-        with closing(conexão.cursor()) as cursor:
+    with sqlite3.connect(nome_db) as conexao:
+        with closing(conexao.cursor()) as cursor:
             cursor.execute(f"""
                 update {nome_tabela}
-                set nome='{nome}', vitorias='{vitorias}', empates='{empates}', derrotas='{derrotas}', total='{total}', media='{media}'
-                where id = '{classificação}'""")
-        conexão.commit()
+                set nome='{nome}',
+                vitorias='{vitorias}',
+                empates='{empates}',
+                derrotas='{derrotas}',
+                total='{total}',
+                media='{media}'
+                where id = '{classificacao}'""")
+        conexao.commit()
 
 
-def consulta_dados(nome_db='Dados.db', nome_tabela='Recordes_jokenpo', classificação='ouro'):
+def consulta_dados(nome_db='Dados.db', nome_tabela='Recordes_jokenpo', classificacao='ouro'):
     import sqlite3
     from contextlib import closing
 
-    with sqlite3.connect(nome_db) as conexão:
-        with closing(conexão.cursor()) as cursor:
+    with sqlite3.connect(nome_db) as conexao:
+        with closing(conexao.cursor()) as cursor:
             cursor.execute(f"select * from {nome_tabela} order by media desc")
             resultado = cursor.fetchall()
-            if classificação == 'ouro':
+            if classificacao == 'ouro':
                 return resultado[0]
-            elif classificação == 'prata':
+            elif classificacao == 'prata':
                 return resultado[1]
-            elif classificação == 'bronze':
+            elif classificacao == 'bronze':
                 return resultado[2]

@@ -1,4 +1,4 @@
-from funçoes import arquivo_existe, atualizar_recordes, inserir_recordes, consulta_dados
+from funçoes import atualizar_recordes, consulta_dados
 
 
 def jokenpo():
@@ -14,10 +14,9 @@ def jokenpo():
     placar_pc = 0
     placar_player = 0
     nome = consulta_nome()
-    WIN_W = 650
-    WIN_H = 450
+    win_w = 650
+    win_h = 450
     bg_color = '#4f4f4f'
-
 
     # layout
     def jokenpo_inicio():
@@ -29,35 +28,34 @@ def jokenpo():
         placar_player = 0
 
         layout = [
-            [sg.Canvas(background_color=bg_color, size=(650, 20), pad=None)], 
-            [sg.Canvas(background_color='#272828', size=(650, 10), pad=None)], 
-            [sg.Canvas(background_color=bg_color, size=(650, 10), pad=None)],
-            [sg.Text(f'{f"Olá {nome}":^90}', font=('Dyuthi', 35), background_color = bg_color, justification='c')],
-            [sg.Text(f'{"FAÇA A SUA ESCOLHA":^100}', font=('Dyuthi', 35), background_color = bg_color, justification='c')],
-            [sg.Canvas(background_color=bg_color, size=(650, 10), pad=None)], 
-            [sg.Canvas(background_color='#272828', size=(650, 10), pad=None)], 
-            [sg.Canvas(background_color=bg_color, size=(60, 150), pad=None),
-            sg.Button('', image_data=buttons.button_pedra64, key='PEDRA', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
-            sg.Canvas(background_color=bg_color, size=(61, 150), pad=None),
-            sg.Button('', image_data=buttons.button_papel64, key='PAPEL', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
-            sg.Canvas(background_color=bg_color, size=(61, 150), pad=None),
-            sg.Button('', image_data=buttons.button_tesoura64, key='TESOURA', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
-            sg.Canvas(background_color=bg_color, size=(60, 150), pad=None)],
-            [sg.Canvas(background_color='#272828', size=(650, 10), pad=None)],
-            [sg.Canvas(background_color=bg_color, size=(650, 10), pad=None)],
-            [sg.Text(f'Placar PC: {placar_pc}', size= (24, 1),font=('Dyuthi', 16), background_color = bg_color, justification='left', key='placar_pc'),
-            sg.Text(f'Placar do Player: {placar_player}', size= (24, 1), font=('Dyuthi', 16), background_color = bg_color, justification='left', key='placar_player')]
+            [sg.Canvas(background_color=bg_color, size=(650, 20))],
+            [sg.Canvas(background_color='#272828', size=(650, 10))],
+            [sg.Canvas(background_color=bg_color, size=(650, 10))],
+            [sg.Text(f'{f"Olá {nome}":^90}', font=('Dyuthi', 35), background_color=bg_color, justification='c')],
+            [sg.Text(f'{"FAÇA A SUA ESCOLHA":^100}', font=('Dyuthi', 35), background_color=bg_color, justification='c')],
+            [sg.Canvas(background_color=bg_color, size=(650, 10))],
+            [sg.Canvas(background_color='#272828', size=(650, 10))],
+            [sg.Canvas(background_color=bg_color, size=(60, 150)),
+                sg.Button('', image_data=buttons.button_pedra64, key='PEDRA', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
+                sg.Canvas(background_color=bg_color, size=(61, 150)),
+                sg.Button('', image_data=buttons.button_papel64, key='PAPEL', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
+                sg.Canvas(background_color=bg_color, size=(61, 150)),
+                sg.Button('', image_data=buttons.button_tesoura64, key='TESOURA', button_color=(sg.theme_background_color('#4f4f4f'), sg.theme_background_color('#4f4f4f')), border_width=0.5),
+                sg.Canvas(background_color=bg_color, size=(60, 150))],
+            [sg.Canvas(background_color='#272828', size=(650, 10))],
+            [sg.Canvas(background_color=bg_color, size=(650, 10))],
+            [sg.Text(f'Placar PC: {placar_pc}', size=(24, 1), font=('Dyuthi', 16), background_color=bg_color, justification='left', key='placar_pc'),
+                sg.Text(f'Placar do Player: {placar_player}', size=(24, 1), font=('Dyuthi', 16), background_color=bg_color, justification='left', key='placar_player')]
         ]
 
         # janela
         return sg.Window('JOKENPÔ',
-        location=(350, 150),
-        layout=layout,
-        background_color = '#4F4F4F',
-        icon= 'imagens/jokenpo/icon_jokenpo.png',
-        size=(WIN_W, WIN_H),
-        finalize=True)
-
+                         location=(350, 150),
+                         layout=layout,
+                         background_color='#4F4F4F',
+                         icon='imagens/jokenpo/icon_jokenpo.png',
+                         size=(win_w, win_h),
+                         finalize=True)
 
     def jogar():
         while True:
@@ -67,10 +65,9 @@ def jokenpo():
                     location=(350, 190),
                     no_titlebar=True,
                     time_between_frames=100,
-                    background_color = '#4F4F4F')
+                    background_color='#4F4F4F')
             break
         return sg.popup_animated(None)
-
 
     def mostrar_resultado(nome='Player'):
         jogar()
@@ -79,26 +76,26 @@ def jokenpo():
 
         sg.theme('DarkBlue14')
         layout = [
-            [sg.Canvas(background_color=bg_color, size=(650, 10), pad=None)],
-            [sg.Text(f'{result}', size=(26, 1), font=('Dyuthi', 50), background_color = '#4F4F4F', text_color='white', justification='center')],
-            [sg.Image(png, background_color = '#4F4F4F')],
-            [sg.Canvas(background_color=bg_color, size=(650, 20), pad=None)],
-            [sg.Text(f'PC', size= (13, 2),font=('Dyuthi', 30), background_color = bg_color, justification='center'),
-            sg.Text(f'{nome}', size= (13, 2),font=('Dyuthi', 30), background_color = bg_color, justification='center')],
-            [sg.Button(f'{"Cancel":^}', key='Cancel', size=(41,3)),
-            sg.Button(f'{"JOGAR NOVAMENTE":^}', key='JOGAR', size=(41,3))]
+            [sg.Canvas(background_color=bg_color, size=(650, 10))],
+            [sg.Text(f'{result}', size=(26, 1), font=('Dyuthi', 50), background_color='#4F4F4F', text_color='white', justification='center')],
+            [sg.Image(png, background_color='#4F4F4F')],
+            [sg.Canvas(background_color=bg_color, size=(650, 20))],
+            [sg.Text(f'PC', size=(13, 2), font=('Dyuthi', 30), background_color=bg_color, justification='center'),
+                sg.Text(f'{nome}', size=(13, 2), font=('Dyuthi', 30), background_color=bg_color, justification='center')],
+            [sg.Button(f'{"Cancel":^}', key='Cancel', size=(41, 3)),
+                sg.Button(f'{"JOGAR NOVAMENTE":^}', key='JOGAR', size=(41, 3))]
             ]
 
         return sg.Window('Jokenpo',
-        location=(350, 150),
-        size=(WIN_W, WIN_H),
-        layout=layout,
-        resizable=True,
-        return_keyboard_events=True,
-        finalize=True,
-        background_color='#4F4F4F',
-        margins=(0,0),
-        no_titlebar=True)
+                         location=(350, 150),
+                         size=(win_w, win_h),
+                         layout=layout,
+                         resizable=True,
+                         return_keyboard_events=True,
+                         finalize=True,
+                         background_color='#4F4F4F',
+                         margins=(0, 0),
+                         no_titlebar=True)
 
     # Criar as janelas iniciais
     janela01, janela02 = jokenpo_inicio(), None
@@ -110,7 +107,7 @@ def jokenpo():
         window, eventos, values = sg.read_all_windows(timeout=1)
         if window == janela01 and eventos in (sg.WIN_CLOSED, 'Cancel'):
             break
-        if window == janela01 and eventos == 'PEDRA' :
+        if window == janela01 and eventos == 'PEDRA':
             p1escolha = 'PEDRA'
         elif window == janela01 and eventos == 'PAPEL':
             p1escolha = 'PAPEL'
@@ -176,14 +173,50 @@ def jokenpo():
             janela02.Hide()
             janela01.UnHide()
         if window == janela02 and eventos in (sg.WIN_CLOSED, 'Cancel'):
-            if media > consulta_dados(classificação='ouro')[6]:
-                atualizar_recordes(nome=consulta_dados(classificação='prata')[1], vitorias=consulta_dados(classificação='prata')[2], empates=consulta_dados(classificação='prata')[3], derrotas=consulta_dados(classificação='prata')[4], total=consulta_dados(classificação='prata')[5], media=consulta_dados(classificação='prata')[6], classificação='bronze')
-                atualizar_recordes(nome=consulta_dados(classificação='ouro')[1], vitorias=consulta_dados(classificação='ouro')[2], empates=consulta_dados(classificação='ouro')[3], derrotas=consulta_dados(classificação='ouro')[4], total=consulta_dados(classificação='ouro')[5], media=consulta_dados(classificação='ouro')[6], classificação='prata')
-                atualizar_recordes(nome=consulta_nome(), vitorias=placar_player, empates=empates, derrotas=placar_pc, total=tentativas, media=media, classificação='ouro')               
-            elif media > consulta_dados(classificação='prata')[6]:
-                atualizar_recordes(nome=consulta_dados(classificação='prata')[1], vitorias=consulta_dados(classificação='prata')[2], empates=consulta_dados(classificação='prata')[3], derrotas=consulta_dados(classificação='prata')[4], total=consulta_dados(classificação='prata')[5], media=consulta_dados(classificação='prata')[6], classificação='bronze')
-                atualizar_recordes(nome=consulta_nome(), vitorias=placar_player, empates=empates, derrotas=placar_pc, total=tentativas, media=media, classificação='prata')
+            if media > consulta_dados(classificacao='ouro')[6]:
+                atualizar_recordes(nome=consulta_dados(classificacao='prata')[1],
+                                   vitorias=consulta_dados(classificacao='prata')[2],
+                                   empates=consulta_dados(classificacao='prata')[3],
+                                   derrotas=consulta_dados(classificacao='prata')[4],
+                                   total=consulta_dados(classificacao='prata')[5],
+                                   media=consulta_dados(classificacao='prata')[6],
+                                   classificacao='bronze')
+                atualizar_recordes(nome=consulta_dados(classificacao='ouro')[1],
+                                   vitorias=consulta_dados(classificacao='ouro')[2],
+                                   empates=consulta_dados(classificacao='ouro')[3],
+                                   derrotas=consulta_dados(classificacao='ouro')[4],
+                                   total=consulta_dados(classificacao='ouro')[5],
+                                   media=consulta_dados(classificacao='ouro')[6],
+                                   classificacao='prata')
+                atualizar_recordes(nome=consulta_nome(),
+                                   vitorias=placar_player,
+                                   empates=empates,
+                                   derrotas=placar_pc,
+                                   total=tentativas,
+                                   media=media,
+                                   classificacao='ouro')
+            elif media > consulta_dados(classificacao='prata')[6]:
+                atualizar_recordes(nome=consulta_dados(classificacao='prata')[1],
+                                   vitorias=consulta_dados(classificacao='prata')[2],
+                                   empates=consulta_dados(classificacao='prata')[3],
+                                   derrotas=consulta_dados(classificacao='prata')[4],
+                                   total=consulta_dados(classificacao='prata')[5],
+                                   media=consulta_dados(classificacao='prata')[6],
+                                   classificacao='bronze')
+                atualizar_recordes(nome=consulta_nome(),
+                                   vitorias=placar_player,
+                                   empates=empates,
+                                   derrotas=placar_pc,
+                                   total=tentativas,
+                                   media=media,
+                                   classificacao='prata')
             elif media > consulta_dados()[6]:
-                atualizar_recordes(nome=consulta_nome(), vitorias=placar_player, empates=empates, derrotas=placar_pc, total=tentativas, media=media, classificação='bronze')
+                atualizar_recordes(nome=consulta_nome(),
+                                   vitorias=placar_player,
+                                   empates=empates,
+                                   derrotas=placar_pc,
+                                   total=tentativas,
+                                   media=media,
+                                   classificacao='bronze')
             break
     window.Close()
