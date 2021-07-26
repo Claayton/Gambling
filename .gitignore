@@ -1,5 +1,4 @@
 *.pyc
 **/__pycache__
 teste.py
-recorde.txt
-nome_atual.txt
+*.db

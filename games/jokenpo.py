@@ -1,8 +1,11 @@
+from funçoes import arquivo_existe, atualizar_recordes, inserir_recordes, consulta_dados
+
+
 def jokenpo():
     from PySimpleGUI import PySimpleGUI as sg
     from random import choice
-    from funçoes import buttons
-    from funçoes.recordes import ler_nome_do_ultimo_player
+    import buttons
+    from funçoes import consulta_nome
 
     p1escolha = ''
     pcescolha = ''
@@ -10,7 +13,7 @@ def jokenpo():
     possibilidades = ['PEDRA', 'PAPEL', 'TESOURA']
     placar_pc = 0
     placar_player = 0
-    nome = ler_nome_do_ultimo_player()
+    nome = consulta_nome()
     WIN_W = 650
     WIN_H = 450
     bg_color = '#4f4f4f'
@@ -18,11 +21,6 @@ def jokenpo():
 
     # layout
     def jokenpo_inicio():
-        if ler_nome_do_ultimo_player() != 'Default':
-            nome = ler_nome_do_ultimo_player()
-        else:
-            nome = ''
-
 
         sg.theme('DarkBlue14')
 
@@ -106,6 +104,8 @@ def jokenpo():
     janela01, janela02 = jokenpo_inicio(), None
 
     # ler eventos 
+    empates = 0
+    tentativas = 0
     while True:
         window, eventos, values = sg.read_all_windows(timeout=1)
         if window == janela01 and eventos in (sg.WIN_CLOSED, 'Cancel'):
@@ -159,6 +159,7 @@ def jokenpo():
             result = 'Venceu'
 
         if window == janela01 and eventos in ('PEDRA', 'PAPEL', 'TESOURA'):
+            tentativas += 1
             janela01.Hide()
             janela02 = mostrar_resultado(nome)
             if result == 'Perdeu':
@@ -167,10 +168,22 @@ def jokenpo():
             elif result == 'Venceu':
                 placar_player += 1
                 window['placar_player'].update(f'Placar Player: {placar_player}')
+            elif result == 'Empate':
+                empates += 1
+            media = (placar_player * 100) / tentativas
 
         if window == janela02 and eventos == 'JOGAR':
             janela02.Hide()
             janela01.UnHide()
         if window == janela02 and eventos in (sg.WIN_CLOSED, 'Cancel'):
+            if media > consulta_dados(classificação='ouro')[6]:
+                atualizar_recordes(nome=consulta_dados(classificação='prata')[1], vitorias=consulta_dados(classificação='prata')[2], empates=consulta_dados(classificação='prata')[3], derrotas=consulta_dados(classificação='prata')[4], total=consulta_dados(classificação='prata')[5], media=consulta_dados(classificação='prata')[6], classificação='bronze')
+                atualizar_recordes(nome=consulta_dados(classificação='ouro')[1], vitorias=consulta_dados(classificação='ouro')[2], empates=consulta_dados(classificação='ouro')[3], derrotas=consulta_dados(classificação='ouro')[4], total=consulta_dados(classificação='ouro')[5], media=consulta_dados(classificação='ouro')[6], classificação='prata')
+                atualizar_recordes(nome=consulta_nome(), vitorias=placar_player, empates=empates, derrotas=placar_pc, total=tentativas, media=media, classificação='ouro')               
+            elif media > consulta_dados(classificação='prata')[6]:
+                atualizar_recordes(nome=consulta_dados(classificação='prata')[1], vitorias=consulta_dados(classificação='prata')[2], empates=consulta_dados(classificação='prata')[3], derrotas=consulta_dados(classificação='prata')[4], total=consulta_dados(classificação='prata')[5], media=consulta_dados(classificação='prata')[6], classificação='bronze')
+                atualizar_recordes(nome=consulta_nome(), vitorias=placar_player, empates=empates, derrotas=placar_pc, total=tentativas, media=media, classificação='prata')
+            elif media > consulta_dados()[6]:
+                atualizar_recordes(nome=consulta_nome(), vitorias=placar_player, empates=empates, derrotas=placar_pc, total=tentativas, media=media, classificação='bronze')
             break
     window.Close()

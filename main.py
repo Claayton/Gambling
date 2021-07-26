@@ -1,20 +1,24 @@
-from funçoes import buttons
 from PySimpleGUI import PySimpleGUI as sg
+import buttons
 from games.jokenpo import jokenpo
 from games.dado import dado
 from games.parouimpar import parouimpar
-from funçoes.recordes import recordes
-from funçoes import gravar_nome_do_ultimo_player, ler_nome_do_ultimo_player
+from recordes import recordes
+from funçoes import consulta_nome, deleta_tabela_Nomes, inserir_nome, atualizar_nome, arquivo_existe, inserir_recordes
 
 # -------------------------------------------------------------------------
 # Janela inicial
 
 
 def janela_inicio():
+    inserir_nome(nome='')
+    if not arquivo_existe():
+        inserir_recordes()
     WIN_W = 650
     WIN_H = 450
     bgcolor = '#272828'
     ccolor = 'black'
+   
 
     sg.theme('DarkBlue14')
     layout = [
@@ -62,30 +66,22 @@ janela01, janela02, janela03, janela04, janela05 = janela_inicio(), None, None, 
 while True:
     window, event, valores = sg.read_all_windows(timeout=1)
     if window == janela01 and event in (sg.WIN_CLOSED, 'Cancel'):
-        gravar_nome_do_ultimo_player(nome='')
+        atualizar_nome(nome_db='Nome.db', nome_tabela='Nomes', nome='')
+        deleta_tabela_Nomes()
         break
     if window == janela01 and event in ('Salvar'):
         nome_do_jogador = str(valores['input']).capitalize()
-        gravar_nome_do_ultimo_player(nome=nome_do_jogador)
-        window['gravado'].update(f'Boa Sorte {ler_nome_do_ultimo_player():}!', text_color='green')
+        atualizar_nome(nome_db='Nome.db', nome_tabela='Nomes', nome=nome_do_jogador)
+        window['gravado'].update(f'Boa Sorte {consulta_nome()}!', text_color='green')
     if window == janela01 and event == 'JOKENPO':
-        window['gravado'].update(f'Boa Sorte {ler_nome_do_ultimo_player():}!', text_color='green')
-        nome_do_jogador = str(valores['input']).capitalize()
-        gravar_nome_do_ultimo_player(nome=nome_do_jogador)
         janela01.Hide()
         janela02 = jokenpo()
         janela01.UnHide()
     if window == janela01 and  event == 'PAROUIMPAR':
-        window['gravado'].update(f'Boa Sorte {ler_nome_do_ultimo_player():}!', text_color='green')
-        nome_do_jogador = str(valores['input']).capitalize()
-        gravar_nome_do_ultimo_player(nome=nome_do_jogador)
         janela01.Hide()
         janela03 = parouimpar()
         janela01.UnHide()
     if window == janela01 and event == 'DADO':
-        window['gravado'].update(f'Boa Sorte {ler_nome_do_ultimo_player():}!', text_color='green')
-        nome_do_jogador = str(valores['input']).capitalize()
-        gravar_nome_do_ultimo_player(nome=nome_do_jogador)
         janela01.Hide()
         janela04 = dado()
         janela01.UnHide()
