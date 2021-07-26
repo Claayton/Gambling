@@ -140,8 +140,3 @@ def consulta_dados(nome_db='Dados.db', nome_tabela='Recordes_jokenpo', classific
                 return resultado[1]
             elif classificação == 'bronze':
                 return resultado[2]
-
-
-    
-
-# print(f"Dados ouro:\n{consulta_dados('recordes.db', 'Nomes', 'bronze')}")
