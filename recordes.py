@@ -18,22 +18,31 @@ def recordes():
 
         sg.theme('DarkBlue14')
         layout = [
-            [sg.Text('RECORDES:', size=(18, 1), font=("Arial", 30), background_color = bgcolor, text_color='white', key='nome')],
-            [sg.Canvas(background_color=bgcolor, size=(650, 30), pad=None)],
-            [sg.Text(f'Medalha da Ouro: ___{consulta_dados(classificação="ouro")[1]}___', size=(50, 1), font=("Arial", 15), background_color = bgcolor, text_color='#DAA520', key='ouro')],
-            [sg.Text(f'Vitórias: {consulta_dados(classificação="ouro")[2]}', size=(20, 1), font=("Arial", 10), background_color = bgcolor, text_color='black'),
-            sg.Text(f'Empates: {consulta_dados(classificação="ouro")[3]}', size=(20, 1), font=("Arial", 10), background_color = bgcolor, text_color='black'),
-            sg.Text(f'Derrotas: {consulta_dados(classificação="ouro")[4]}', size=(20, 1), font=("Arial", 10), background_color = bgcolor, text_color='black'),
-            sg.Text(f'Total: {consulta_dados(classificação="ouro")[5]}', size=(20, 1), font=("Arial", 10), background_color = bgcolor, text_color='black')],
+            [sg.Canvas(background_color=bgcolor, size=(650, 20), pad=None)],
+            [sg.Text('RECORDES', size=(70, 1), font=("Arial", 30), background_color = bgcolor, text_color='white', key='nome', justification='center')],
             [sg.Canvas(background_color='black', size=(650, 2), pad=None)],
             [sg.Canvas(background_color=bgcolor, size=(650, 30), pad=None)],
-            [sg.Text('Medalha de Prata:', size=(100, 1), font=("Arial", 15), background_color = bgcolor, text_color='#A9A9A9', key='prata')],
-            [sg.Text(f'{consulta_dados()}', size=(100, 1), font=("Arial", 10), background_color = bgcolor, text_color='#A9A9A9')],
+            [sg.Text(f'JOKENPOH               PAR OU ÍMPAR        DADO', size=(70, 1), font=("Dyuthi", 20), background_color = bgcolor, text_color='white', key='ouro')],
             [sg.Canvas(background_color='black', size=(650, 2), pad=None)],
-            [sg.Canvas(background_color=bgcolor, size=(650, 30), pad=None)],
-            [sg.Text('Medalha de bronze:', size=(100, 1), font=("Arial", 15), background_color = bgcolor, text_color='#CD7F32', key='bronze')],
-            [sg.Text(f'{consulta_dados()}', size=(100, 1), font=("Arial", 10), background_color = bgcolor, text_color='#CD7F32')],
+            [sg.Canvas(background_color=bgcolor, size=(650, 15), pad=None)],
+
+            [sg.Text(f'Nome: {consulta_dados(classificação="ouro")[1]}\nMédia de vitórias: {consulta_dados(classificação="ouro")[6]:.1f}%', size=(30, 2), font=("Arial", 10), background_color = bgcolor, text_color='#DAA520', justification='left'),
+            sg.Text(f'Nome: {consulta_dados(classificação="prata")[1]}\nMédia de vitórias: {consulta_dados(classificação="prata")[6]:.1f}%', size=(30, 2), font=("Arial", 10), background_color = bgcolor, text_color='#DAA520', justification='left'),
+            sg.Text(f'Nome: {consulta_dados(classificação="bronze")[1]}\nMédia de vitórias: {consulta_dados(classificação="bronze")[6]:.1f}%', size=(30, 2), font=("Arial", 10), background_color = bgcolor, text_color='#DAA520', justification='left')],
             [sg.Canvas(background_color='black', size=(650, 2), pad=None)],
+            [sg.Canvas(background_color=bgcolor, size=(650, 15), pad=None)],
+
+            [sg.Text(f'Nome: {"Default"}\nMédia de vitórias: {"Default"}', size=(30, 2), font=("Arial", 10), background_color = bgcolor, text_color='#A9A9A9', justification='left'),
+            sg.Text(f'Nome: {"Default"}\nMédia de vitórias: {"Default"}', size=(30, 2), font=("Arial", 10), background_color = bgcolor, text_color='#A9A9A9', justification='left'),
+            sg.Text(f'Nome: {"Default"}\nMédia de vitórias: {"Default"}', size=(30, 2), font=("Arial", 10), background_color = bgcolor, text_color='#A9A9A9', justification='left')],
+            [sg.Canvas(background_color='black', size=(650, 2), pad=None)],
+            [sg.Canvas(background_color=bgcolor, size=(650, 15), pad=None)],
+
+            [sg.Text(f'Nome: {"Default"}\nMédia de vitórias: {"Default"}', size=(30, 2), font=("Arial", 10), background_color = bgcolor, text_color='#CD7F32', justification='left'),
+            sg.Text(f'Nome: {"Default"}\nMédia de vitórias: {"Default"}', size=(30, 2), font=("Arial", 10), background_color = bgcolor, text_color='#CD7F32', justification='left'),
+            sg.Text(f'Nome: {"Default"}\nMédia de vitórias: {"Default"}', size=(30, 2), font=("Arial", 10), background_color = bgcolor, text_color='#CD7F32', justification='left')],
+            [sg.Canvas(background_color='black', size=(650, 2), pad=None)],
+            [sg.Canvas(background_color=bgcolor, size=(650, 10), pad=None)]
             ] 
 
         return sg.Window('Recordes',
